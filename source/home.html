@@ -127,6 +127,9 @@ p{margin:0;max-width:56ch}
 .panel.on{flex-grow:3.4}
 .panel>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.1) brightness(.6);transform:scale(1.04);transition:filter .6s,transform 1.2s cubic-bezier(.2,.7,.2,1)}
 .panel.on>img{filter:none;transform:scale(1)}
+/* daylight stock photos: pulled down to sit with the night shots */
+.panel.day.on>img{filter:brightness(.78) contrast(1.08) saturate(.85)}
+.panel.day::after{background:linear-gradient(0deg,rgba(10,10,11,.95) 0%,rgba(10,10,11,.5) 45%,rgba(10,10,11,.05) 75%)}
 .panel.xr>img{filter:grayscale(1) contrast(1.15) brightness(.7)}
 .panel.xr.on>img{filter:grayscale(1) contrast(1.2) brightness(.95)}
 .panel::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,10,11,.92) 0%,rgba(10,10,11,.35) 45%,rgba(10,10,11,0) 70%)}
@@ -574,13 +577,13 @@ html.entering .hero .reg{transition:opacity .8s ease 1s,transform .8s ease 1s}
         <span class="v" aria-hidden="true">Return to sport</span>
         <div class="x"><h3>Strength &amp; return to sport</h3><p>Know where you stand before you go back. Strength, speed and sport-specific testing.</p><a class="go" href="#book">Book this <span class="ar">→</span></a></div>
       </article>
-      <article class="panel type" tabindex="0" id="ndis">
-        <div class="tp" aria-hidden="true"><i></i></div>
+      <article class="panel day" tabindex="0" id="ndis">
+        <img src="{{ndis_wc}}" alt="Physiotherapist guiding a man in a wheelchair through a dumbbell exercise" style="object-position:46% 30%">
         <span class="v" aria-hidden="true">NDIS</span>
         <div class="x"><h3>NDIS physiotherapy</h3><p>Mobility, balance, transfers and community access goals, at home or in the clinic. Clear updates for families and support coordinators.</p><a class="go" href="#contact">Ask about NDIS <span class="ar">→</span></a></div>
       </article>
-      <article class="panel type" tabindex="0">
-        <div class="tp" aria-hidden="true"><i></i></div>
+      <article class="panel day" tabindex="0">
+        <img src="{{home_visit}}" alt="Physiotherapist running a resistance band exercise with an older woman in her living room" style="object-position:58% 45%">
         <span class="v" aria-hidden="true">Mobile &amp; home</span>
         <div class="x"><h3>Mobile &amp; home visits</h3><p>No travel needed. Your home, gym or training ground across metro Adelaide and the eastern suburbs. Ideal if you work full-time.</p><a class="go" href="#book">Book a home visit <span class="ar">→</span></a></div>
       </article>
