@@ -301,6 +301,17 @@ p{margin:0;max-width:56ch}
 
 /* booking */
 .book{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,5vw,72px);align-items:start;max-width:none}
+#book{--bg:#FFFFFF;--bg2:#F3F4F5;--fg:#0A0A0B;--muted:#53575C;--line:#E2E4E6;background:#fff;color:#0A0A0B;color-scheme:light}
+#book .bhead h2{font-size:clamp(2rem,min(4vw,7.4vh),5.25rem)}
+#book .lede b{color:var(--fg);font-weight:600}
+.bfacts{list-style:none;margin:0;padding:0;display:grid;gap:clamp(8px,1.6vh,14px);border-top:2px solid var(--fg);padding-top:clamp(14px,2.6vh,24px)}
+.bfacts li{display:flex;gap:12px;align-items:baseline;font:600 clamp(0.9375rem,min(1.2vw,2.1vh),1.125rem)/1.35 var(--sans)}
+.bfacts li::before{content:"";flex:none;width:1rem;aspect-ratio:var(--fxratio);background:var(--signal);-webkit-mask:var(--fxmask) center/contain no-repeat;mask:var(--fxmask) center/contain no-repeat;transform:translateY(2px)}
+.balt{display:grid;justify-items:start;gap:10px;margin-top:clamp(18px,3.4vh,36px)}
+.balt .btn{white-space:normal}
+#book .cklink{font-size:.875rem;color:var(--muted);text-underline-offset:3px}
+#book .cklink:hover{color:var(--fg)}
+@media (max-width:900px){#book .bookmain{display:contents}#book .bhead{order:1;margin-bottom:0}#book .bookside{order:2}#book .bfacts{order:3}#book .balt{order:4;margin-top:0}}
 .bhead{display:grid;gap:clamp(10px,1.8vh,16px);margin-bottom:clamp(18px,3.4vh,40px)}
 .bhead h2{font-size:clamp(1.875rem,min(3.4vw,6vh),5rem)}
 .prices{border-top:2px solid var(--fg)}
@@ -309,7 +320,7 @@ p{margin:0;max-width:56ch}
 .price small{color:var(--muted);font-size:0.875rem}
 .price em{font-style:normal;font-weight:600;grid-row:1/3;grid-column:2;align-self:center;font-variant-numeric:tabular-nums}
 .bookside{display:grid;gap:clamp(14px,2.6vh,22px)}
-.ckwrap{background:#fff;border:1px solid #E2E4E6;box-shadow:0 30px 60px -30px rgba(0,0,0,.55);min-height:560px}
+.ckwrap{background:#fff;border:1px solid var(--line);min-height:560px}
 .ckwrap iframe{display:block;width:100%;min-height:560px;border:0}
 .cklink{margin:0;font-size:.875rem;color:var(--muted)}
 .cklink a{color:var(--fg);text-underline-offset:3px}
@@ -341,7 +352,7 @@ p{margin:0;max-width:56ch}
 /* desktop: the booking section is one screen; Cliniko fills the right column and scrolls inside it */
 @media (min-width:901px) and (min-height:561px){
   #book .wrap{flex:1;min-height:0;display:flex;flex-direction:column}
-  #book .book{flex:1;min-height:0;align-items:stretch;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}
+  #book .book{flex:1;min-height:0;align-items:stretch;grid-template-columns:minmax(0,.78fr) minmax(0,1.32fr)}
   #book .bookmain{display:flex;flex-direction:column;justify-content:center}
   #book .price{grid-template-columns:auto 1fr auto;align-items:baseline;gap:4px 14px}
   #book .price em{grid-row:auto;grid-column:auto}
@@ -369,6 +380,8 @@ p{margin:0;max-width:56ch}
 .finfo div:nth-child(even){padding-left:16px;border-left:1px solid var(--line)}
 @media (min-width:1100px){.finfo{grid-template-columns:repeat(3,minmax(0,1fr))}.finfo div:nth-child(even){padding-left:0;border-left:0}.finfo div:not(:nth-child(3n+1)){padding-left:16px;border-left:1px solid var(--line)}}
 .finfo dd{margin:0;font-weight:500}
+.finfo dd.hrs{display:grid;font-size:.875rem;line-height:1.4}
+@media (min-width:861px) and (max-height:720px){.ask{padding:14px 20px;gap:8px}.ask p{font-size:.875rem}.fbody{padding-top:calc(var(--navh) + 1vh);padding-bottom:2vh;gap:10px}}
 @media (min-width:861px) and (max-height:800px){.finfo div{padding-top:8px;padding-bottom:8px}.fbody{gap:12px}textarea{min-height:46px}form{gap:10px 14px}}
 .finfo a{text-decoration:none}
 .finfo a:hover{text-decoration:underline}
@@ -680,18 +693,22 @@ html.entering .hero .reg{transition:opacity .8s ease 1s,transform .8s ease 1s}
   </div>
 </section>
 
-<!-- BOOKING -->
+<!-- BOOKING: light section so Cliniko's white form sits natively -->
 <section class="snap fill" id="book">
   <div class="wrap">
     <div class="book">
       <div class="bookmain">
-        <div class="bhead"><span class="eyebrow">Book online</span><h2>Start with a 60&#8209;minute assessment</h2><p class="lede">No referral needed. In the clinic, at home or online. You'll leave with a written plan.</p></div>
-        <div class="prices" aria-label="Appointment types">
-          <div class="price"><strong>Initial assessment</strong><small>Clinic or home</small><em>60 min</em></div>
-          <div class="price"><strong>Follow-up</strong><small>Clinic or home</small><em>20 or 30 min</em></div>
-          <div class="price"><strong>Manual therapy &amp; massage</strong><small>Performance focus</small><em>30 to 90 min</em></div>
-          <div class="price"><strong>Telehealth</strong><small>Consult or follow-up by video</small><em>40 or 20 min</em></div>
-          <div class="price"><strong>NDIS session</strong><small>Home or clinic</small><em>60 min</em></div>
+        <div class="bhead"><span class="eyebrow">Book online</span><h2>Book an appointment</h2><p class="lede">New here? Choose <b>Initial assessment</b>. It's 60 minutes and you leave with a written plan.</p></div>
+        <ul class="bfacts">
+          <li>No referral needed</li>
+          <li>Cancel or reschedule free with 24 hours' notice</li>
+          <li>Your intake form arrives by email after you book</li>
+        </ul>
+        <div class="balt">
+          <span class="cklink">Prefer to talk?</span>
+          <a class="btn btn-s" href="tel:+61449969060">Call 0449 969 060</a>
+          <a class="cklink" href="https://flexfusionx.au5.cliniko.com/bookings" target="_blank" rel="noopener">Open the booking page in a new tab ↗</a>
+          <a class="cklink" href="terms.html">Booking terms</a>
         </div>
       </div>
       <div class="bookside">
@@ -700,13 +717,6 @@ html.entering .hero .reg{transition:opacity .8s ease 1s,transform .8s ease 1s}
         <iframe id="cliniko-80172789" src="https://flexfusionx.au5.cliniko.com/bookings?embedded=true" title="Book an appointment with FlexFusionX (Cliniko)" frameborder="0" scrolling="auto" width="100%" height="1000" style="pointer-events:auto" allow="payment"></iframe>
 <!--/CLINIKO-->
       </div>
-      <p class="cklink">Prefer a full page? <a href="https://flexfusionx.au5.cliniko.com/bookings" target="_blank" rel="noopener">Open the booking page ↗</a></p>
-        <div class="assure">
-          <div>No GP referral needed</div>
-          <div>Clinic, home or telehealth sessions</div>
-          <div>Need to cancel? Just give 24 hours' notice. No fees. <a href="terms.html">Booking terms</a></div>
-          <div>Health questions go through Cliniko's secure intake form</div>
-        </div>
       </div>
     </div>
   </div>
@@ -729,9 +739,9 @@ html.entering .hero .reg{transition:opacity .8s ease 1s,transform .8s ease 1s}
       <div><dt class="eyebrow">Phone</dt><dd><a href="tel:+61449969060">0449 969 060</a></dd></div>
       <div><dt class="eyebrow">Email</dt><dd><a href="mailto:ck@flexfusionx.com.au">ck@flexfusionx.com.au</a></dd></div>
       <div><dt class="eyebrow">Home visits</dt><dd>Adelaide metro &amp; eastern suburbs</dd></div>
-      <div><dt class="eyebrow">Hours</dt><dd>Mon &amp; Tue 6–8pm<br>Wed &amp; Fri 8am–8pm<br>Sat 8am–12pm · Sun 10am–3pm</dd></div>
+      <div><dt class="eyebrow">Hours</dt><dd class="hrs"><span>Mon &amp; Tue 6–8pm</span><span>Wed &amp; Fri 8am–8pm</span><span>Sat 8am–12pm</span><span>Sun 10am–3pm</span></dd></div>
       <div><dt class="eyebrow">Parking</dt><dd>On site at the clinic</dd></div>
-      <div><dt class="eyebrow">Telehealth</dt><dd>Video sessions, anywhere in Australia</dd></div>
+      <div><dt class="eyebrow">Telehealth</dt><dd>Video sessions Australia-wide</dd></div>
     </dl>
     <div class="ask">
       <h3>Not sure where to start? Ask me first.</h3>
@@ -824,12 +834,13 @@ html.entering .hero .reg{transition:opacity .8s ease 1s,transform .8s ease 1s}
   }
   function stacked(){return xsc.classList.contains('xstack')}
   function xflip(){
-    if(stacked()){xst.classList.remove('flip');nav.classList.remove('lightnav');return}
+    if(stacked()){xst.classList.remove('flip');var bk0=document.getElementById('book').getBoundingClientRect();nav.classList.toggle('lightnav',bk0.top<=72&&bk0.bottom>=72);return}
     var r=xsc.getBoundingClientRect(),run=r.height-window.innerHeight,p=run>0?-r.top/run:0;
     if(p>0.42)xst.classList.add('flip');else if(p<0.3)xst.classList.remove('flip');
-    nav.classList.toggle('lightnav',xst.classList.contains('flip')&&r.top<=1&&r.bottom>=72);
+    var bk=document.getElementById('book').getBoundingClientRect();
+    nav.classList.toggle('lightnav',(xst.classList.contains('flip')&&r.top<=1&&r.bottom>=72)||(bk.top<=72&&bk.bottom>=72));
   }
-  function onScroll(){var y=window.scrollY;nav.classList.toggle('solid',y>40);sb.classList.toggle('show',y>window.innerHeight*.8);xflip()}
+  function onScroll(){var y=window.scrollY,bk=document.getElementById('book').getBoundingClientRect();nav.classList.toggle('solid',y>40);sb.classList.toggle('show',y>window.innerHeight*.8&&!(bk.top<window.innerHeight*.6&&bk.bottom>window.innerHeight*.4));xflip()}
   xfit();
   window.addEventListener('scroll',onScroll,{passive:true});window.addEventListener('resize',function(){xfit();onScroll()});onScroll();
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){xfit();onScroll()});
