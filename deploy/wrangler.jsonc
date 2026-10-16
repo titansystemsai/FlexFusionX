@@ -1,6 +1,12 @@
 {
-  // flexfusionx.com.au: static site served by Cloudflare Workers static assets (Titan Systems account)
+  // flexfusionx.com.au: static site on Cloudflare Workers static assets (Titan Systems account)
   "name": "flexfusionx",
+  "main": "worker.js",
+  "workers_dev": true,
   "compatibility_date": "2026-10-12",
-  "assets": { "directory": "./site", "html_handling": "auto-trailing-slash" }
+  "assets": { "directory": "./site", "binding": "ASSETS", "html_handling": "auto-trailing-slash", "run_worker_first": false },
+  "routes": [
+    { "pattern": "flexfusionx.com.au", "custom_domain": true },
+    { "pattern": "www.flexfusionx.com.au", "custom_domain": true }
+  ]
 }
