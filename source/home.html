@@ -1,0 +1,927 @@
+<title>FlexFusionX Homepage</title>
+<meta name="description" content="FlexFusionX v1 homepage: performance and NDIS physiotherapy in Evandale, Adelaide">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,500;125,600;125,700;125,900&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,900&display=swap">
+<style>
+:root{
+  color-scheme: dark;
+  --ink:#0A0A0B;
+  --white:#FFFFFF;
+  --silver:#A3A7AC;
+  --soft:#C9CCD0;
+  --signal:#E3262D;
+  --note:#F2B705;
+  --note-ink:#1A1400;
+  --bg:#0A0A0B;
+  --bg2:#131315;
+  --fg:#FFFFFF;
+  --muted:#B4B8BC;
+  --line:rgba(255,255,255,.11);
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --wide:"Archivo","Arial Black",system-ui,sans-serif;
+  --gut:clamp(16px,4vw,7rem);
+  --navh:4.5rem;
+  --fxmask:none;
+}
+body.light{color-scheme:light;--bg:#FFFFFF;--bg2:#F3F4F5;--fg:#0A0A0B;--muted:#53575C;--line:#E2E4E6}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:0;font-size:clamp(16px,calc(7.4px + .6vw),21px)}
+/* snapping only where every section fits on screen: desktop/tablet landscape with real height */
+@media (min-width:700px) and (min-height:480px){html{scroll-snap-type:y proximity}}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 1.0625rem/1.55 var(--sans);-webkit-font-smoothing:antialiased;transition:background-color .3s,color .3s}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
+
+.wrap{padding-inline:var(--gut);width:100%}
+.snap{position:relative;min-height:100vh;min-height:100svh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center;padding-top:calc(var(--navh) + clamp(12px,4vh,48px));padding-bottom:clamp(20px,6vh,64px);background:var(--bg);color:var(--fg)}
+.snap.alt{background:var(--bg2)}
+.fill{height:100vh;height:100svh}
+@media (max-width:860px),(max-height:560px){.fill{height:auto}}
+
+/* type, sized against both width and height so each screen fits */
+.eyebrow{display:block;font:700 0.6875rem/1.3 var(--wide);font-stretch:125%;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+h1,h2,h3{margin:0;font-family:var(--sans);font-weight:900;text-transform:uppercase;letter-spacing:-.035em;line-height:.92;text-wrap:balance}
+h2{font-size:clamp(2.125rem,min(5.6vw,9vh),5.75rem)}
+h3{font-size:clamp(1.125rem,min(1.7vw,2.8vh),1.625rem);letter-spacing:-.02em;line-height:1}
+p{margin:0;max-width:56ch}
+.lede{font-size:clamp(1rem,min(1.35vw,2.3vh),1.25rem);line-height:1.5;color:var(--muted)}
+.head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:end;gap:14px 48px;margin-bottom:clamp(18px,4vh,48px)}
+.head>div{display:grid;gap:12px}
+.head.wide{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr)}
+@media (max-width:860px){.head.wide{grid-template-columns:1fr}}
+.head.wide h2{font-size:clamp(2rem,min(4.6vw,7.2vh),5rem)}
+@media (max-width:860px){.head{grid-template-columns:1fr}}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:.75rem;padding:1rem 1.4rem;font:700 0.75rem/1 var(--wide);font-stretch:125%;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;border:1.5px solid currentColor;background:none;cursor:pointer;transition:background .2s,color .2s,border-color .2s;white-space:nowrap}
+.btn .ar{font-family:var(--sans);letter-spacing:0}
+.btn-w{background:var(--white);color:var(--ink);border-color:var(--white)}
+.btn-w:hover{background:transparent;color:var(--white)}
+.btn-o{color:var(--white);border-color:rgba(255,255,255,.5)}
+.btn-o:hover{background:var(--white);color:var(--ink);border-color:var(--white)}
+.btn-p{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.btn-p:hover{background:transparent;color:var(--fg)}
+.btn-s{color:var(--fg);border-color:var(--line)}
+.btn-s:hover{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.tbc{display:inline-block;padding:0 6px;border:1px dashed currentColor;opacity:.7;font:600 0.6875rem/1.6 var(--sans);letter-spacing:.04em}
+
+/* controls */
+.ctrl{position:fixed;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:60;display:grid;gap:6px;justify-items:end;opacity:.55;transition:opacity .2s}
+.ctrl:hover,.ctrl:focus-within{opacity:1}
+.ctrl .more{display:none}
+.ctrl:hover .more,.ctrl:focus-within .more{display:block}
+.ctrl button{padding:9px 12px;font:700 0.6875rem/1 var(--wide);font-stretch:125%;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border:1px solid rgba(255,255,255,.25);background:var(--ink);color:var(--white);box-shadow:0 6px 24px rgba(0,0,0,.35)}
+
+/* nav */
+.nav{position:fixed;left:0;right:0;top:env(safe-area-inset-top,0px);z-index:50;color:var(--white);border-bottom:1px solid transparent}
+.nav,.nav ul a,.nav .btn,.nav .brand img,.menu-btn{transition:background-color .5s,color .5s,border-color .5s,filter .5s}
+.nav.solid{background:rgba(10,10,11,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom-color:rgba(255,255,255,.08)}
+.nav.lightnav{background:rgba(255,255,255,.94);color:#0A0A0B;border-bottom-color:rgba(10,10,11,.08)}
+.nav.lightnav .brand img{filter:none}
+.nav.lightnav ul a{color:#3F4348}
+.nav.lightnav .btn-w{background:#0A0A0B;color:#fff;border-color:#0A0A0B}
+.nav .wrap{display:flex;align-items:center;gap:28px;height:var(--navh)}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand .mk{height:1.5rem;width:auto;filter:invert(1)}
+.brand .wm{height:.6875rem;width:auto;filter:invert(1)}
+.nav ul{display:flex;gap:1.6rem;list-style:none;margin:0 0 0 auto;padding:0}
+.nav ul a{text-decoration:none;color:var(--soft);font:700 0.6562rem/1 var(--wide);font-stretch:125%;letter-spacing:.16em;text-transform:uppercase}
+.nav ul a:hover{color:var(--white)}
+.nav .btn{padding:.75rem 1rem}
+.menu-btn{display:none;background:none;border:1px solid rgba(255,255,255,.3);color:inherit;padding:.7rem .75rem;font:700 0.6875rem/1 var(--wide);font-stretch:125%;letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
+.nav.lightnav .menu-btn{border-color:rgba(10,10,11,.3)}
+@media (max-width:1060px){.nav ul{display:none}.menu-btn{display:block;margin-left:auto}}
+@media (max-width:420px){.brand .wm{display:none}}
+.drawer{position:fixed;inset:0;z-index:70;background:rgba(10,10,11,.97);display:grid;align-content:center;padding:calc(var(--navh) + 20px) var(--gut) 40px;gap:8px}
+.drawer[hidden]{display:none}
+.drawer a{font:900 clamp(1.875rem,8vw,3.5rem)/1.05 var(--sans);text-transform:uppercase;letter-spacing:-.03em;color:#fff;text-decoration:none}
+.drawer .close{position:absolute;top:20px;right:var(--gut);background:none;border:1px solid rgba(255,255,255,.3);color:#fff;padding:.7rem .75rem;font:700 0.6875rem/1 var(--wide);font-stretch:125%;letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
+
+/* hero */
+.hero{padding:0;justify-content:center;background:var(--ink);color:var(--white);isolation:isolate;overflow:hidden}
+.hero .pic{position:absolute;z-index:0;inset:0 0 0 auto;width:64%;-webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.45) 20%,#000 48%);mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.45) 20%,#000 48%)}
+.hero .pic img{width:100%;height:100%;object-fit:cover;object-position:46% 42%}
+.hero .pic::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,10,11,.6) 0%,rgba(10,10,11,0) 30%)}
+.hero .in{position:relative;z-index:2;display:grid;gap:clamp(16px,3vh,1.6rem);max-width:min(48rem,58%);padding-top:var(--navh)}
+.hero h1{font-size:clamp(2.625rem,min(7vw,11.5vh),7.5rem)}
+.hero h1 span{display:block}
+.hero .sub{color:var(--soft);font-size:clamp(1rem,min(1.4vw,2.4vh),1.25rem);line-height:1.5;max-width:42ch}
+.hero .reg{position:absolute;z-index:2;left:var(--gut);bottom:calc(22px + env(safe-area-inset-bottom,0px));font:600 0.6875rem/1 var(--wide);font-stretch:125%;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+@media (max-width:820px){
+  .hero{justify-content:flex-end}
+  .hero .pic{width:100%;inset:0 0 auto 0;height:60%;-webkit-mask-image:linear-gradient(180deg,#000 50%,transparent 100%);mask-image:linear-gradient(180deg,#000 50%,transparent 100%)}
+  .hero .in{max-width:none;padding-bottom:56px;padding-top:30svh}
+  .hero h1{font-size:clamp(2.125rem,min(11vw,7.4vh),3.75rem)}
+  .hero .sub{font-size:0.9375rem}
+}
+@media (max-width:820px){.hero.fill{height:100vh;height:100svh}}
+
+/* services strip */
+.services{justify-content:flex-start}
+.strip{flex:1 1 auto;min-height:0;display:flex;gap:4px;margin-inline:calc(var(--gut) * -1)}
+.panel{position:relative;flex:1 1 0;min-width:0;overflow:hidden;background:#000;color:var(--white);transition:flex-grow .6s cubic-bezier(.2,.7,.2,1);outline:none}
+.panel.on{flex-grow:3.4}
+.panel>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.1) brightness(.6);transform:scale(1.04);transition:filter .6s,transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.panel.on>img{filter:none;transform:scale(1)}
+.panel.xr>img{filter:grayscale(1) contrast(1.15) brightness(.7)}
+.panel.xr.on>img{filter:grayscale(1) contrast(1.2) brightness(.95)}
+.panel::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,10,11,.92) 0%,rgba(10,10,11,.35) 45%,rgba(10,10,11,0) 70%)}
+.panel.type{background:#101012}
+.panel.type .tp{position:absolute;inset:0;display:grid;place-items:center;padding-bottom:18%}
+.panel.type .tp i{display:block;width:46%;max-width:170px;aspect-ratio:var(--fxratio);background:rgba(255,255,255,.07);-webkit-mask:var(--fxmask) center/contain no-repeat;mask:var(--fxmask) center/contain no-repeat;transition:background .5s}
+.panel.type.on .tp i{background:rgba(227,38,45,.24)}
+.panel .v{position:absolute;z-index:2;left:18px;bottom:22px;writing-mode:vertical-rl;transform:rotate(180deg);font:900 clamp(0.875rem,min(1.3vw,2.2vh),1.1875rem)/1 var(--sans);text-transform:uppercase;white-space:nowrap;transition:opacity .3s}
+.panel.on .v{opacity:0}
+.panel .x{position:absolute;z-index:2;left:clamp(20px,2.4vw,32px);right:clamp(20px,2.4vw,32px);bottom:clamp(18px,3vh,36px);display:grid;gap:clamp(8px,1.4vh,12px);opacity:0;transform:translateY(12px);transition:opacity .35s ease,transform .45s ease;pointer-events:none;min-width:280px}
+.panel.on .x{opacity:1;transform:none;transition-delay:.25s;pointer-events:auto}
+.panel .x h3{font-size:clamp(1.375rem,min(2.6vw,4.4vh),2.5rem);line-height:.95}
+.panel .x p{color:var(--soft);max-width:38ch;font-size:clamp(0.875rem,min(1.15vw,2.1vh),1.0625rem)}
+.swipe{display:none}
+@media (max-width:860px){.swipe{display:inline}}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{padding:.4rem .55rem;border:1px solid rgba(255,255,255,.35);font:700 0.6875rem/1 var(--wide);font-stretch:125%;letter-spacing:.14em;text-transform:uppercase}
+.panel .go{font:700 0.6875rem/1 var(--wide);font-stretch:125%;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;display:inline-flex;gap:10px;align-items:center;border-bottom:1.5px solid currentColor;padding-bottom:6px;justify-self:start}
+@media (max-height:640px) and (min-width:861px){.panel .tags{display:none}}
+@media (max-width:860px){
+  .services{justify-content:center}
+  .strip{flex:none;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-inline:var(--gut);scroll-padding-inline:var(--gut);gap:10px;scrollbar-width:none}
+  .strip::-webkit-scrollbar{display:none}
+  .panel{flex:0 0 min(82%,420px);height:clamp(280px,calc(100svh - 430px),520px);scroll-snap-align:start}
+  .panel.on{flex-grow:0}
+  .panel .v{display:none}
+  .panel .x{opacity:1;transform:none;pointer-events:auto;min-width:0}
+  .panel>img{filter:grayscale(.2) brightness(.6)}
+}
+
+/* x-ray scene */
+.xscene{position:relative;height:200vh;height:200svh}
+.snapmark{position:absolute;left:0;width:1px;height:1px;scroll-snap-align:start;pointer-events:none}
+.snapmark.m2{top:100vh;top:100svh}
+.xstage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#000}
+.xl{position:absolute;inset:0;display:flex}
+.xl.a{background:#000;color:#fff}
+.xl.b{background:#fff;color:#0A0A0B;clip-path:inset(100% 0 0 0);transition:clip-path 1.05s cubic-bezier(.72,0,.18,1)}
+.xstage.flip .xl.b{clip-path:inset(0 0 0 0)}
+.xgrid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,80px);align-items:center;width:100%;height:100%;padding:calc(var(--navh) + 2vh) var(--gut) 7vh}
+.xfig{margin:0;height:100%;min-height:0;display:grid;place-items:center}
+.xfig img{height:min(82svh,calc((100svh - var(--navh) - 9vh) * .94));width:auto;max-width:100%;object-fit:contain;-webkit-mask-image:radial-gradient(ellipse 70% 76% at 50% 48%,#000 56%,transparent 100%);mask-image:radial-gradient(ellipse 70% 76% at 50% 48%,#000 56%,transparent 100%);animation:xdrift 20s ease-in-out infinite alternate}
+@keyframes xdrift{from{transform:scale(1)}to{transform:scale(1.05) translateY(-1.5%)}}
+.xtext{display:grid;gap:clamp(10px,2.2vh,1.25rem);align-content:center;max-width:44rem}
+.xtext h2{font-size:clamp(2.25rem,min(5.2vw,8.6vh),5.5rem)}
+.xl.a .eyebrow{color:#B4B8BC}
+.xl.b .eyebrow{color:#53575C}
+.xl.a .xtext{transition:opacity .45s ease,transform .6s ease}
+.xstage.flip .xl.a .xtext{opacity:0;transform:translateY(-28px)}
+.xl.b .xtext>*{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.xstage.flip .xl.b .xtext>*{opacity:1;transform:none}
+.xstage.flip .xl.b .xtext>*:nth-child(1){transition-delay:.45s}
+.xstage.flip .xl.b .xtext>*:nth-child(2){transition-delay:.55s}
+.xstage.flip .xl.b .xtext>*:nth-child(3){transition-delay:.65s}
+.xstage.flip .xl.b .xtext>*:nth-child(4){transition-delay:.75s}
+.pains{list-style:none;margin:4px 0 0;padding:0;display:grid}
+.pains li{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:baseline;padding:clamp(7px,1.35vh,13px) 0;border-top:1px solid rgba(255,255,255,.12);font:600 clamp(1rem,min(1.6vw,2.8vh),1.6875rem)/1.2 var(--sans);letter-spacing:-.01em;color:#E6E7E9}
+.pains li:last-child{border-bottom:1px solid rgba(255,255,255,.12)}
+.pains li::before{content:"";width:.9rem;height:2px;background:var(--signal);transform:translateY(-.3em)}
+.fixes{list-style:none;margin:4px 0 0;padding:0;display:grid;gap:clamp(8px,1.6vh,14px)}
+.fixes li{display:flex;gap:14px;align-items:baseline;font:600 clamp(1.125rem,min(1.8vw,3vh),1.875rem)/1.2 var(--sans);letter-spacing:-.01em}
+.fixes li::before{content:"";flex:none;width:1.1rem;aspect-ratio:var(--fxratio);background:var(--signal);-webkit-mask:var(--fxmask) center/contain no-repeat;mask:var(--fxmask) center/contain no-repeat;transform:translateY(2px)}
+.xquote{margin:0;font:500 clamp(0.9375rem,min(1.35vw,2.4vh),1.25rem)/1.45 var(--sans);color:#3F4348;max-width:52ch;padding-top:clamp(10px,2vh,18px);border-top:1px solid rgba(10,10,11,.16)}
+.sig{display:block;margin-top:8px;font:700 0.6875rem/1.3 var(--wide);font-stretch:125%;letter-spacing:.2em;text-transform:uppercase;color:#6B6F74}
+.xprog{position:absolute;left:var(--gut);bottom:calc(20px + env(safe-area-inset-bottom,0px));display:flex;gap:18px;align-items:center;font:700 0.6875rem/1 var(--wide);font-stretch:125%;letter-spacing:.18em;text-transform:uppercase}
+.xprog span{opacity:.4}
+.xprog span.on{opacity:1}
+.xprog i{display:block;width:40px;height:1px;background:currentColor;opacity:.4}
+/* stacked fallback: applied by script only when the text can't fit beside the X-ray */
+.xscene.xstack{height:auto}
+.xstack .snapmark{display:none}
+.xstack .xstage{position:relative;height:auto;background:none}
+.xstack .xl{position:relative;min-height:100vh;min-height:100svh;clip-path:none!important;align-items:center}
+.xstack .xgrid{grid-template-columns:1fr;height:auto;padding:calc(var(--navh) + 16px) var(--gut) 56px;gap:20px}
+.xstack .xfig{display:none}
+.xstack .xl.b .xtext>*{opacity:1;transform:none}
+.xstack .xstage.flip .xl.a .xtext{opacity:1;transform:none}
+.xstack .xprog{display:none}
+
+
+/* services carousel controls */
+.scar{display:flex;align-items:center;gap:12px;margin-top:clamp(10px,2vh,18px)}
+.scar button{width:2.6rem;height:2.6rem;display:grid;place-items:center;border:1px solid var(--line);background:none;color:var(--fg);cursor:pointer;font:500 1rem/1 var(--sans);transition:border-color .2s}
+.scar button:hover{border-color:var(--fg)}
+.dots{display:flex;gap:6px}
+.dots i{display:block;width:1.4rem;height:3px;background:rgba(255,255,255,.18);transition:background .3s,width .3s}
+.dots i.on{background:var(--signal);width:2.2rem}
+.slbl{margin-left:auto;font:700 0.6875rem/1 var(--wide);font-stretch:125%;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.slbl b{color:var(--fg)}
+@media (max-width:860px){.strip{cursor:grab}.strip.drag{scroll-snap-type:none;cursor:grabbing}.slbl{display:none}.scar{justify-content:center}}
+
+
+/* approach */
+#approach .wrap{flex:1;display:flex;flex-direction:column}
+.apx{flex:1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}
+.apx div{display:flex;flex-direction:column;gap:12px;padding:clamp(18px,3vh,36px);background:var(--bg2);border-top:2px solid var(--fg);min-height:clamp(150px,22vh,300px)}
+.apx i{display:block;width:1.6rem;aspect-ratio:var(--fxratio);background:var(--signal);-webkit-mask:var(--fxmask) center/contain no-repeat;mask:var(--fxmask) center/contain no-repeat}
+.apx h3{margin-top:auto;padding-top:clamp(12px,3vh,40px)}
+.apx p{color:var(--muted);font-size:clamp(0.875rem,min(1.15vw,2.1vh),1.125rem)}
+@media (max-width:980px){.apx{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.apx{grid-template-columns:1fr}.apx div{min-height:0}}
+
+/* meet cyriac */
+.about{padding:0;flex-direction:row;align-items:stretch;overflow:hidden}
+.about .ph{position:relative;flex:0 0 42%;overflow:hidden;margin:0}
+.about .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:55% 22%}
+.about .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,11,0) 60%,var(--bg) 100%),linear-gradient(0deg,rgba(10,10,11,.6) 0%,rgba(10,10,11,0) 30%)}
+.about .ph figcaption{position:absolute;z-index:1;left:var(--gut);bottom:24px;color:var(--soft)}
+.about .copy{flex:1;display:grid;align-content:safe center;gap:clamp(10px,2vh,18px);padding:calc(var(--navh) + 2vh) var(--gut) 4vh clamp(24px,4vw,64px)}
+.about h2{font-size:clamp(2.125rem,min(4.6vw,7.6vh),4.875rem)}
+.about .role{font:700 0.6875rem/1.3 var(--wide);font-stretch:125%;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.about .lede{font-size:clamp(0.9375rem,min(1.3vw,2.2vh),1.1875rem)}
+.about .big{font:900 clamp(1.25rem,min(2.3vw,3.8vh),2.125rem)/1 var(--sans);text-transform:uppercase;letter-spacing:-.03em}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,3vw,40px)}
+.twocol ul{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:clamp(3px,.7vh,6px);font-size:clamp(0.8125rem,min(1.1vw,1.95vh),1rem)}
+.twocol li{padding-left:16px;position:relative}
+.twocol li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:1.5px;background:var(--signal)}
+.credline{display:flex;flex-wrap:wrap;gap:6px 18px;padding-top:clamp(8px,1.6vh,14px);border-top:1px solid var(--line);font-size:0.8438rem;color:var(--muted)}
+.credline b{color:var(--fg);font-weight:600}
+@media (min-width:861px) and (max-width:1200px){.about .ph{flex-basis:36%}}
+@media (max-width:860px){.about{flex-direction:column}.about .ph{flex:none;height:56vh}.about .ph::after{background:linear-gradient(0deg,var(--bg) 0%,rgba(10,10,11,0) 40%)}.about .copy{padding:20px var(--gut) 56px}.twocol{grid-template-columns:1fr}}
+
+/* partners: index list + preview stage */
+.partners{padding:0;flex-direction:row;align-items:stretch;overflow:hidden}
+.plist-wrap{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:safe center;padding:calc(var(--navh) + 3vh) clamp(24px,4vw,64px) 4vh var(--gut)}
+.plist{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.prow{display:grid;grid-template-columns:1fr;gap:clamp(4px,.8vh,8px);padding:clamp(10px,2.4vh,30px) 0;border-bottom:1px solid var(--line);cursor:default;transition:opacity .35s}
+.plist:hover .prow:not(.on){opacity:.38}
+.prow .pn{font:900 clamp(1.5rem,min(3.2vw,6.2vh),4.625rem)/.92 var(--sans);text-transform:uppercase;letter-spacing:-.045em;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.prow.on .pn{transform:translateX(14px)}
+.prow .pr{font:700 0.6875rem/1.4 var(--wide);font-stretch:125%;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.prow .pthumb{display:none}
+.pfoot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px 24px;margin-top:clamp(14px,3vh,28px);color:var(--muted);font-size:0.9375rem}
+.pstage{position:relative;flex:0 0 40%;overflow:hidden;background:#000}
+.pstage figure{position:absolute;inset:0;margin:0;opacity:0;transition:opacity .6s ease}
+.pstage figure.on{opacity:1}
+.pstage figure img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.pstage figure.on img{transform:scale(1)}
+.pstage figure::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--bg2) 0%,rgba(19,19,21,0) 22%),linear-gradient(0deg,rgba(10,10,11,.55) 0%,rgba(10,10,11,0) 35%)}
+.pstage figcaption{position:absolute;z-index:1;left:28px;bottom:24px;font:700 0.6875rem/1 var(--wide);font-stretch:125%;letter-spacing:.18em;text-transform:uppercase;color:var(--soft)}
+.pstage .ph{position:absolute;inset:0;display:grid;place-items:center;background:#101012}
+.pstage .ph.co .col{display:grid;justify-items:center;gap:clamp(14px,2.6vh,24px);width:min(70%,24rem)}
+.pstage .ph.co .fxm{width:42%;height:auto;filter:invert(1)}
+.pstage .ph.co .wmk{width:78%;height:auto;filter:invert(1)}
+.pstage .ph.co .rule{display:flex;align-items:center;gap:12px;width:100%;color:var(--signal);font:300 1.4rem/1 var(--sans)}
+.pstage .ph.co .rule::before,.pstage .ph.co .rule::after{content:"";flex:1;height:1.5px;background:var(--signal)}
+.pstage .ph.co .wl{width:82%;height:auto}
+.pstage .ph i{display:block;width:34%;aspect-ratio:var(--fxratio);background:rgba(255,255,255,.08);-webkit-mask:var(--fxmask) center/contain no-repeat;mask:var(--fxmask) center/contain no-repeat}
+@media (max-width:860px){
+  .partners{flex-direction:column}
+  .pstage{display:none}
+  .plist-wrap{padding:calc(var(--navh) + 20px) var(--gut) 48px}
+  .prow{grid-template-columns:72px 1fr;align-items:center}
+  .prow .pthumb{display:block;grid-row:span 2;width:72px;aspect-ratio:1;overflow:hidden;background:#101012;position:relative}
+  .prow .pthumb img{width:100%;height:100%;object-fit:cover}
+  .prow .pthumb.co{display:grid;justify-items:center;align-content:center;gap:4px;padding:6px}
+  .prow .pthumb.co .f{width:48%;height:auto;filter:invert(1)}
+  .prow .pthumb.co .ln{display:block;width:80%;height:1.5px;background:var(--signal)}
+  .prow .pthumb.co .w{width:94%;height:auto;object-fit:contain}
+  .prow .pthumb i{position:absolute;inset:22%;background:rgba(255,255,255,.1);-webkit-mask:var(--fxmask) center/contain no-repeat;mask:var(--fxmask) center/contain no-repeat}
+  .prow .pr{text-align:left;padding:0}
+  .plist:hover .prow:not(.on){opacity:1}
+  .prow.on .pn{transform:none}
+}
+
+
+/* adaptive fit: set by script when content can't fit one screen */
+.fill.grow{height:auto}
+.services.grow .strip{flex:none;height:clamp(340px,64vh,640px)}
+.nosnap{scroll-snap-align:none}
+
+
+/* booking */
+.book{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,5vw,72px);align-items:start;max-width:none}
+.bhead{display:grid;gap:clamp(10px,1.8vh,16px);margin-bottom:clamp(18px,3.4vh,40px)}
+.bhead h2{font-size:clamp(1.875rem,min(3.4vw,6vh),5rem)}
+.prices{border-top:2px solid var(--fg)}
+.price{display:grid;grid-template-columns:1fr auto;gap:2px 16px;padding:clamp(6px,1.4vh,15px) 0;border-bottom:1px solid var(--line)}
+.price strong{font-weight:600}
+.price small{color:var(--muted);font-size:0.875rem}
+.price em{font-style:normal;font-weight:600;grid-row:1/3;grid-column:2;align-self:center;font-variant-numeric:tabular-nums}
+.bookside{display:grid;gap:clamp(14px,2.6vh,22px)}
+.ckwrap{background:#fff;border:1px solid #E2E4E6;box-shadow:0 30px 60px -30px rgba(0,0,0,.55);min-height:560px}
+.ckwrap iframe{display:block;width:100%;min-height:560px;border:0}
+.cklink{margin:0;font-size:.875rem;color:var(--muted)}
+.cklink a{color:var(--fg);text-underline-offset:3px}
+.ckfall{display:grid;gap:14px;padding:clamp(22px,3vw,34px);color:#0A0A0B}
+.ckfall h3{font-size:clamp(1.25rem,2vw,1.6rem)}
+.ckfall p{color:#53575C;max-width:44ch}
+.ckfall .btn{justify-self:start}
+.assure{display:grid;grid-template-columns:1fr 1fr;gap:clamp(6px,1.2vh,12px) 24px;padding-top:clamp(12px,2vh,20px);border-top:1px solid var(--line)}
+@media (max-width:560px){.assure{grid-template-columns:1fr}}
+.assure div{position:relative;padding-left:17px;font-size:0.875rem;line-height:1.4}
+.assure a{color:inherit;text-underline-offset:3px}
+.assure div::before{content:"";position:absolute;left:0;top:.45em;width:7px;height:7px;background:var(--fg)}
+.widget{border:1px solid #E2E4E6;background:#fff;color:#0A0A0B;box-shadow:0 30px 60px -30px rgba(0,0,0,.55)}
+.widget-top{display:flex;justify-content:space-between;padding:14px 18px;border-bottom:1px solid #E2E4E6;font:500 0.75rem/1 var(--sans);color:#53575C}
+.appt{display:grid;grid-template-columns:1fr auto;gap:2px 16px;padding:clamp(10px,1.8vh,14px) 18px;border-bottom:1px solid #E2E4E6}
+.appt.sel{box-shadow:inset 3px 0 0 #0A0A0B;background:#F3F4F5}
+.appt small{color:#53575C;font-size:0.8125rem}
+.appt em{font-style:normal;font-weight:600;font-size:0.875rem;grid-row:1/3;grid-column:2;align-self:center}
+.slots{padding:clamp(10px,1.8vh,14px) 18px;display:grid;gap:8px}
+.days,.times{display:grid;gap:6px}
+.days{grid-template-columns:repeat(5,minmax(0,1fr))}
+.times{grid-template-columns:repeat(4,minmax(0,1fr))}
+.days span,.times span{padding:7px 0;text-align:center;border:1px solid #E2E4E6;font:500 0.8125rem/1.25 var(--sans);font-variant-numeric:tabular-nums}
+.days span b{display:block;font-size:0.9375rem}
+.days .on,.times .on{background:#0A0A0B;color:#fff;border-color:#0A0A0B}
+.times .off{color:#A3A7AC;text-decoration:line-through}
+.widget-foot{padding:12px 18px;border-top:1px solid #E2E4E6;font:500 0.6875rem/1.4 var(--sans);color:#53575C;display:flex;justify-content:space-between}
+@media (max-width:900px){.book{grid-template-columns:1fr}.times{grid-template-columns:repeat(3,minmax(0,1fr))}}
+/* desktop: the booking section is one screen; Cliniko fills the right column and scrolls inside it */
+@media (min-width:901px) and (min-height:561px){
+  #book .wrap{flex:1;min-height:0;display:flex;flex-direction:column}
+  #book .book{flex:1;min-height:0;align-items:stretch;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}
+  #book .bookmain{display:flex;flex-direction:column;justify-content:center}
+  #book .price{grid-template-columns:auto 1fr auto;align-items:baseline;gap:4px 14px}
+  #book .price em{grid-row:auto;grid-column:auto}
+  #book .bookside{display:flex;flex-direction:column;gap:12px;min-height:0}
+  #book .ckwrap{flex:1;min-height:clamp(260px,46vh,560px);display:flex;flex-direction:column;justify-content:center}
+  #book .ckwrap iframe{flex:1;height:auto!important;min-height:0}
+  #book.grow .ckwrap{flex:none;height:560px}
+}
+
+/* find us: map fills the left half, details + form balanced on the right */
+.findus{padding:0;flex-direction:row;align-items:stretch;overflow:hidden}
+.fmap{position:relative;flex:0 0 46%;background:#000;overflow:hidden}
+.fmap .fphoto{position:absolute;inset:0;display:block}
+.fmap .fphoto img{width:100%;height:100%;object-fit:cover;object-position:100% 55%;filter:saturate(.9) brightness(.92);transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.fmap .fphoto:hover img{transform:scale(1.03)}
+.fmap::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(10,10,11,.85) 0%,rgba(10,10,11,.15) 45%,rgba(10,10,11,0) 70%)}
+.fcard{position:absolute;z-index:2;left:var(--gut);right:clamp(20px,3vw,48px);bottom:clamp(20px,5vh,48px);display:grid;gap:14px;padding:clamp(18px,2.6vh,26px);background:rgba(10,10,11,.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.12)}
+.fcard strong{font:900 clamp(1.25rem,min(2vw,3.4vh),1.875rem)/1 var(--sans);text-transform:uppercase;letter-spacing:-.02em}
+.fcard span{color:var(--soft);font-size:0.9375rem}
+.fbody{flex:1;min-width:0;display:grid;align-content:safe center;gap:clamp(12px,2.4vh,26px);padding:calc(var(--navh) + 2vh) var(--gut) 3vh clamp(24px,4vw,64px)}
+.fbody h2{font-size:clamp(30px,min(3.6vw,6.6vh),4.6rem)}
+@media (min-width:1100px){.fbody h2{white-space:nowrap}}
+.finfo{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+.finfo div{display:grid;gap:4px;padding:clamp(10px,1.8vh,16px) 16px clamp(10px,1.8vh,16px) 0;border-bottom:1px solid var(--line)}
+.finfo div:nth-child(even){padding-left:16px;border-left:1px solid var(--line)}
+@media (min-width:1100px){.finfo{grid-template-columns:repeat(3,minmax(0,1fr))}.finfo div:nth-child(even){padding-left:0;border-left:0}.finfo div:not(:nth-child(3n+1)){padding-left:16px;border-left:1px solid var(--line)}}
+.finfo dd{margin:0;font-weight:500}
+@media (min-width:861px) and (max-height:800px){.finfo div{padding-top:8px;padding-bottom:8px}.fbody{gap:12px}textarea{min-height:46px}form{gap:10px 14px}}
+.finfo a{text-decoration:none}
+.finfo a:hover{text-decoration:underline}
+form{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.6vh,14px) 14px}
+form .full{grid-column:1/-1}
+form h3{grid-column:1/-1}
+label{display:grid;gap:6px;font:700 0.6562rem/1.3 var(--wide);font-stretch:125%;letter-spacing:.14em;text-transform:uppercase}
+input,textarea{font:400 1rem/1.4 var(--sans);color:var(--fg);background:var(--bg2);border:1px solid var(--line);padding:.75rem .9rem;border-radius:0;width:100%}
+input:focus,textarea:focus{outline:2px solid var(--fg);outline-offset:-1px}
+textarea{min-height:clamp(56px,8vh,110px);resize:vertical}
+.hint{font:400 0.8125rem/1.4 var(--sans);color:var(--muted);letter-spacing:0;text-transform:none}
+.sent{font-size:0.875rem;font-weight:600}
+@media (max-width:900px){.findus{flex-direction:column}.fmap{flex:none;height:46svh}.fbody{padding:28px var(--gut) 56px}}
+@media (max-width:520px){form{grid-template-columns:1fr}.finfo{grid-template-columns:1fr}.finfo div:nth-child(even){padding-left:0;border-left:0}}
+
+.ask{display:grid;gap:clamp(10px,1.8vh,16px);padding:clamp(20px,3vw,32px);background:var(--bg2);border:1px solid var(--line)}
+.ask p{color:var(--muted)}
+.ask .btn{justify-content:center}
+@media (max-width:520px){.ask .ctas{display:grid}}
+
+/* faq */
+.faq2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 clamp(24px,4vw,64px)}
+.faq2>div>details:first-child{border-top:1px solid var(--line)}
+details{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;padding:clamp(11px,2vh,24px) 0;font:600 clamp(0.9375rem,min(1.25vw,2.2vh),1.1875rem)/1.35 var(--sans)}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font:400 1.5rem/1 var(--sans);transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 0 16px;color:var(--muted)}
+@media (min-width:861px) and (max-height:600px){#faq .head{margin-bottom:12px}summary{padding:9px 0}}
+@media (max-width:860px){.faq2{grid-template-columns:1fr}.faq2>div+div>details:first-child{border-top:0}}
+
+/* footer */
+footer{background:var(--ink);color:var(--white);padding-block:52px calc(44px + env(safe-area-inset-bottom,0px));border-top:1px solid rgba(255,255,255,.08);scroll-snap-align:end}
+.foot{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px}
+.foot h4{margin:0 0 12px;font:700 0.6875rem/1.3 var(--wide);font-stretch:125%;letter-spacing:.2em;text-transform:uppercase;color:var(--silver)}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:0.9375rem}
+.foot a{text-decoration:none}
+.foot a:hover{text-decoration:underline}
+.lockup{width:13rem;filter:invert(1)}
+.legal{margin-top:40px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);display:grid;gap:8px;color:var(--silver);font-size:0.8125rem}
+@media (max-width:860px){.foot{grid-template-columns:1fr 1fr}.foot>div:first-child{grid-column:span 2}}
+
+/* mobile book bar */
+.stickybook{display:none}
+@media (max-width:720px){
+  .stickybook{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:55;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--white);border-top:1px solid rgba(255,255,255,.1);transform:translateY(110%);transition:transform .35s}
+  .stickybook.show{transform:none}
+  .stickybook .btn{padding:12px 14px}
+  .ctrl{display:none}
+  footer{padding-bottom:calc(110px + env(safe-area-inset-bottom,0px))}
+}
+
+/* ---------- intro loader + dock ---------- */
+.intro{position:fixed;inset:0;z-index:100;background-color:var(--ink);color:var(--white);overflow:hidden;cursor:pointer;transition:background-color .7s ease .15s}
+.intro[hidden]{display:none}
+.intro .ibg{position:absolute;inset:0;transition:opacity .6s ease .05s}
+.intro .ibg img{width:100%;height:100%;object-fit:cover;object-position:68% 42%;filter:brightness(.48) saturate(.95)}
+.intro .ibg::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(10,10,11,.15) 0%,rgba(10,10,11,.8) 80%)}
+.stage{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:24px;padding:24px;text-align:center}
+.ifx2{width:clamp(110px,min(15vw,22vh),210px);filter:invert(1)}
+.iw{font:900 clamp(1.5rem,min(6.4vw,10vh),5.75rem)/1 var(--wide);font-stretch:125%;letter-spacing:.06em;margin-right:-.06em;white-space:nowrap}
+.iw .ch{display:inline-block;white-space:pre}
+.isub{font:500 clamp(0.625rem,1.3vw,1rem)/1 var(--wide);font-stretch:125%;letter-spacing:.5em;text-transform:uppercase;margin-right:-.5em;color:#D6D8DB}
+.iest{display:flex;align-items:center;gap:18px;font:600 clamp(0.625rem,1vw,0.8125rem)/1 var(--wide);font-stretch:125%;letter-spacing:.4em;color:#D6D8DB}
+.iest i{display:block;width:clamp(40px,6vw,90px);height:1px;background:#D6D8DB}
+.iest i:last-child{transform-origin:right center}
+.ibar{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.08)}
+.ibar i{display:block;height:100%;background:var(--signal);transform-origin:left center}
+.iskip{position:absolute;right:20px;bottom:calc(22px + env(safe-area-inset-bottom,0px));background:transparent;border:1px solid rgba(255,255,255,.35);color:#D6D8DB;padding:9px 12px;font:700 0.6875rem/1 var(--wide);font-stretch:125%;letter-spacing:.18em;text-transform:uppercase;cursor:pointer}
+.icount{position:absolute;left:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));font:900 0.8125rem/1 var(--sans);color:#D6D8DB;font-variant-numeric:tabular-nums}
+.intro{--w0:.3s}
+.intro.play .ibg img{animation:izoom 4.6s cubic-bezier(.2,.6,.2,1) both}
+.intro.play .ifx2{animation:iwipe .9s cubic-bezier(.6,0,.2,1) both;animation-delay:var(--w0)}
+.intro.play .iw{animation:itrack 1.9s cubic-bezier(.15,.7,.15,1) both;animation-delay:calc(var(--w0) + .35s)}
+.intro.play .iw .ch{animation:ilt .7s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--w0) + .35s + var(--i) * 85ms)}
+.intro.play .isub{animation:irise .7s ease both;animation-delay:calc(var(--w0) + 1.45s)}
+.intro.play .iest{animation:irise .6s ease both;animation-delay:calc(var(--w0) + 1.8s)}
+.intro.play .iest i{animation:iline .7s cubic-bezier(.6,0,.2,1) both;animation-delay:calc(var(--w0) + 1.9s)}
+.intro.play .ibar i{animation:ibar 3.4s linear both}
+.intro.done,.intro.done *{animation:none!important}
+.intro.leaving{background-color:rgba(10,10,11,0);pointer-events:none}
+.intro.leaving .ibg{opacity:0}
+.intro.leaving .ifx2{transition:transform .95s cubic-bezier(.7,0,.2,1);will-change:transform}
+.intro.leaving .iw .ch{opacity:0;filter:blur(8px);transform:translateY(-.35em);transition:opacity .4s ease,filter .4s ease,transform .4s ease;transition-delay:calc(var(--i) * 24ms)}
+.intro.leaving .isub,.intro.leaving .iest,.intro.leaving .icount,.intro.leaving .iskip,.intro.leaving .ibar{opacity:0;transform:translateY(-12px);transition:opacity .3s ease,transform .3s ease}
+@keyframes izoom{from{transform:scale(1.12)}to{transform:scale(1)}}
+@keyframes ilt{from{opacity:0;filter:blur(10px);transform:translateY(.28em)}to{opacity:1;filter:blur(0);transform:none}}
+@keyframes iline{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes iwipe{from{clip-path:inset(0 100% 0 0);opacity:.3}to{clip-path:inset(0 0 0 0);opacity:1}}
+@keyframes itrack{from{letter-spacing:.55em;margin-right:-.55em}to{letter-spacing:.06em;margin-right:-.06em}}
+@keyframes irise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes ibar{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+html.dock .nav .mk,html.dock .nav .wm{opacity:0}
+.nav .brand .wm{transition:opacity .6s ease .1s,filter .5s}
+html.pre .nav ul,html.pre .nav .btn,html.pre .menu-btn{opacity:0;transform:translateY(-8px)}
+html.pre .hero .pic img{transform:scale(1.1);filter:brightness(.35)}
+html.pre .hero h1 span{clip-path:inset(0 0 100% 0);transform:translateY(.4em)}
+html.pre .hero .sub,html.pre .hero .ctas,html.pre .hero .reg{opacity:0;transform:translateY(16px)}
+html.entering .nav ul,html.entering .nav .btn,html.entering .menu-btn{transition:opacity .6s ease .55s,transform .6s ease .55s}
+html.entering .hero .pic img{transition:transform 2s cubic-bezier(.2,.7,.2,1),filter 1.4s ease}
+html.entering .hero h1 span{transition:clip-path 1s cubic-bezier(.2,.75,.2,1) .15s,transform 1s cubic-bezier(.2,.75,.2,1) .15s}
+html.entering .hero h1 span:nth-child(2){transition-delay:.27s}
+html.entering .hero h1 span:nth-child(3){transition-delay:.39s}
+html.entering .hero .sub{transition:opacity .7s ease .6s,transform .7s ease .6s}
+html.entering .hero .ctas{transition:opacity .7s ease .74s,transform .7s ease .74s}
+html.entering .hero .reg{transition:opacity .8s ease 1s,transform .8s ease 1s}
+</style>
+
+<div class="intro" id="intro" aria-hidden="true">
+  <div class="ibg"><img src="{{soccer_xl}}" alt=""></div>
+  <div class="stage">
+    <img class="ifx2" src="{{mark}}" alt="">
+    <div class="iw">FLEXFUSIONX</div>
+    <div class="isub">Performance Physiotherapy</div>
+    <div class="iest"><i></i>EST 2026<i></i></div>
+  </div>
+  <span class="icount" id="icount">000</span>
+  <button class="iskip" type="button">Skip intro</button>
+  <div class="ibar"><i></i></div>
+</div>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="FlexFusionX home">
+      <img class="mk" src="{{mark}}" alt="FX">
+      <img class="wm" src="{{word}}" alt="FlexFusionX">
+    </a>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why">Why us</a></li>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#partners">Partners</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="menu-btn" type="button" id="menuBtn" aria-expanded="false" aria-controls="drawer">Menu</button>
+    <a class="btn btn-w" href="#book">Book <span class="ar">→</span></a>
+  </div>
+</header>
+<nav class="drawer" id="drawer" hidden aria-label="Menu">
+  <button class="close" type="button" id="menuClose">Close</button>
+  <a href="#services">Services</a><a href="#why">Why us</a><a href="#approach">Approach</a><a href="#about">About</a><a href="#partners">Partners</a><a href="#faq">FAQ</a><a href="#contact">Contact</a><a href="#book">Book →</a>
+</nav>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="snap fill hero" aria-label="Introduction">
+  <div class="pic"><img src="{{sled_hd}}" alt="Athlete pushing a weighted sled in a dark gym"></div>
+  <div class="wrap">
+    <div class="in">
+      <h1><span>Rehab that</span><span>works around</span><span>your training.</span></h1>
+      <p class="sub">Injured and told to stop? Book a 60-minute assessment in the clinic, at home or online, and leave with a plan that keeps you moving.</p>
+      <div class="ctas">
+        <a class="btn btn-w" href="#book">Book an appointment <span class="ar">→</span></a>
+        <a class="btn btn-o" href="#services">Explore services</a>
+      </div>
+    </div>
+  </div>
+  <span class="reg">AHPRA registered physiotherapist</span>
+</section>
+
+<!-- SERVICES -->
+<section class="snap fill services" id="services">
+  <div class="wrap" style="display:flex;flex-direction:column;flex:1;min-height:0">
+    <div class="head">
+      <div><span class="eyebrow">Services</span><h2>Rehab for how you move</h2></div>
+      <p class="lede">For athletes, runners and lifters, busy professionals and NDIS participants. In the clinic, at home or online.</p>
+    </div>
+    <div class="strip" id="strip">
+      <article class="panel on" tabindex="0">
+        <img src="{{boxgym_hd}}" alt="Fighter gloving up under gym lights">
+        <span class="v" aria-hidden="true">Musculoskeletal</span>
+        <div class="x"><h3>Musculoskeletal physiotherapy</h3><p>Back, neck or joint pain that won't settle? Tendon or persistent pain? Find out what's driving it and get a plan to address it.</p><a class="go" href="#book">Book this <span class="ar">→</span></a></div>
+      </article>
+      <article class="panel" tabindex="0">
+        <img src="{{soccer_xl}}" alt="Football players contesting the ball at night" style="object-position:62% 40%">
+        <span class="v" aria-hidden="true">Sports injury</span>
+        <div class="x"><h3>Sports injury rehabilitation</h3><p>Strains, sprains and injuries that keep coming back. Training gets adjusted, not cancelled, and your coach can stay in the loop.</p><a class="go" href="#book">Book this <span class="ar">→</span></a></div>
+      </article>
+      <article class="panel xr" tabindex="0">
+        <img src="{{knee_hd}}" alt="X-ray of a knee replacement" style="object-position:50% 45%">
+        <span class="v" aria-hidden="true">Post-operative</span>
+        <div class="x"><h3>Post-operative rehabilitation</h3><p>ACL reconstruction, joint replacement and other surgery. Clear milestones at every stage.</p><a class="go" href="#book">Book this <span class="ar">→</span></a></div>
+      </article>
+      <article class="panel" tabindex="0">
+        <img src="{{ring_band}}" alt="Muay Thai fighters in the ring">
+        <span class="v" aria-hidden="true">Return to sport</span>
+        <div class="x"><h3>Strength &amp; return to sport</h3><p>Know where you stand before you go back. Strength, speed and sport-specific testing.</p><a class="go" href="#book">Book this <span class="ar">→</span></a></div>
+      </article>
+      <article class="panel type" tabindex="0" id="ndis">
+        <div class="tp" aria-hidden="true"><i></i></div>
+        <span class="v" aria-hidden="true">NDIS</span>
+        <div class="x"><h3>NDIS physiotherapy</h3><p>Mobility, balance, transfers and community access goals, at home or in the clinic. Clear updates for families and support coordinators.</p><a class="go" href="#contact">Ask about NDIS <span class="ar">→</span></a></div>
+      </article>
+      <article class="panel type" tabindex="0">
+        <div class="tp" aria-hidden="true"><i></i></div>
+        <span class="v" aria-hidden="true">Mobile &amp; home</span>
+        <div class="x"><h3>Mobile &amp; home visits</h3><p>No travel needed. Your home, gym or training ground across metro Adelaide and the eastern suburbs. Ideal if you work full-time.</p><a class="go" href="#book">Book a home visit <span class="ar">→</span></a></div>
+      </article>
+    </div>
+    <div class="scar" aria-label="Services carousel">
+      <button type="button" class="sprev" aria-label="Previous service">&larr;</button>
+      <div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+      <button type="button" class="snext" aria-label="Next service">&rarr;</button>
+      <span class="slbl" aria-live="polite"><b>01</b> / 06 · <span>Musculoskeletal physiotherapy</span></span>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY: x-ray scene. Black = the gap, white = the system -->
+<div class="xscene" id="why">
+  <span class="snapmark" style="top:0"></span><span class="snapmark m2"></span>
+  <div class="xstage" id="xstage">
+    <div class="xl a">
+      <div class="xgrid">
+        <figure class="xfig" style="margin:0"><img src="{{xr_dark}}" alt="Side X-ray of the skull and cervical spine"></figure>
+        <div class="xtext">
+          <span class="eyebrow">Why FlexFusionX</span>
+          <h2>I saw a gap.</h2>
+          <div><span class="eyebrow">Too many people were</span>
+            <ul class="pains">
+              <li>Given generic exercises</li>
+              <li>Not progressing properly</li>
+              <li>Getting injured again and again</li>
+              <li>Told to stop training completely</li>
+              <li>Left with short-term relief and no long-term plan</li>
+              <li>Stuck in endless appointments with no direction</li>
+            </ul></div>
+        </div>
+      </div>
+      <div class="xprog"><span class="on">01 The gap</span><i></i><span>02 The system</span></div>
+    </div>
+    <div class="xl b">
+      <div class="xgrid">
+        <figure class="xfig" style="margin:0"><img src="{{xr_inv}}" alt="The same X-ray, inverted"></figure>
+        <div class="xtext">
+          <span class="eyebrow">Why FlexFusionX</span>
+          <h2>So I built a system that&hellip;</h2>
+          <ul class="fixes">
+            <li>Focuses on performance, not just pain</li>
+            <li>Gives rehab structure and progression</li>
+            <li>Keeps you moving forward</li>
+          </ul>
+          <p class="xquote">If you train regularly, you need a different level of physiotherapy. You need someone who understands load, progression and performance.<span class="sig">Cyriac Kallarakkal · Founder</span></p>
+        </div>
+      </div>
+      <div class="xprog"><span>01 The gap</span><i></i><span class="on">02 The system</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- APPROACH -->
+<section class="snap" id="approach">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="eyebrow">The FlexFusionX approach</span><h2>We don't tell you to &ldquo;just rest&rdquo;.</h2></div>
+      <p class="lede">Most rehab means short-term relief and time off. Here, load gets adjusted and capacity gets built while you keep training.</p>
+    </div>
+    <div class="apx">
+      <div><i aria-hidden="true"></i><h3>Active, not passive</h3><p>Progressive strength and load management instead of rest and passive treatment.</p></div>
+      <div><i aria-hidden="true"></i><h3>Specific to your sport</h3><p>Rehab built around how you train, play and move. Your coach is welcome in the loop.</p></div>
+      <div><i aria-hidden="true"></i><h3>You'll know the why</h3><p>Your injury, your plan and the reason behind every step.</p></div>
+      <div><i aria-hidden="true"></i><h3>Support between sessions</h3><p>A written program after every visit, and direct messages answered within 24 hours.</p></div>
+    </div>
+    <div class="ctas" style="margin-top:clamp(18px,4vh,44px)"><a class="btn btn-p" href="#book">Book an appointment <span class="ar">→</span></a></div>
+  </div>
+</section>
+
+<!-- MEET CYRIAC -->
+<section class="snap fill about" id="about">
+  <figure class="ph"><img src="{{cyriac}}" alt="Cyriac Kallarakkal pitch-side with Mount Barker United"><figcaption class="eyebrow">Pitch-side · Mount Barker United</figcaption></figure>
+  <div class="copy">
+    <span class="eyebrow">Meet your physio</span>
+    <h2>Cyriac Kallarakkal</h2>
+    <span class="role">Physiotherapist · Founder</span>
+    <p class="lede">I'm a physiotherapist focused on performance, rehabilitation and long-term physical development. I work with athletes, lifters and fighters, and I support NDIS participants at home and in the clinic.</p>
+    <span class="big">I understand training.</span>
+    <div class="twocol">
+      <div><span class="eyebrow">I've worked with</span><ul><li>Pitch-side and sports environments</li><li>Combat athletes managing load and injury</li><li>Bodybuilders through high volume and posing</li><li>Everyday people who want to move better</li></ul></div>
+      <div><span class="eyebrow">For NDIS participants</span><ul><li>The same physio every visit</li><li>Goal-focused plans at home or in clinic</li><li>Clear updates for families and coordinators</li><li>Reports for plan reviews when needed</li></ul></div>
+    </div>
+    <div class="credline"><span><b>AHPRA</b> PHY0004039512</span><span><b>Qualification</b> Bachelor of Health Sciences, Master of Physiotherapy (Flinders University)</span><span><b>Checks</b> Police · WWCC · First aid · Insured</span></div>
+    <div class="ctas"><a class="btn btn-p" href="#book">Book with Cyriac <span class="ar">→</span></a></div>
+  </div>
+</section>
+
+<!-- PARTNERS: index list + preview -->
+<section class="snap fill alt partners" id="partners">
+  <div class="plist-wrap">
+    <div class="head" style="grid-template-columns:1fr;margin-bottom:clamp(14px,3vh,36px)">
+      <div><span class="eyebrow">In the community</span><h2>Proudly supporting</h2></div>
+      <p class="lede">Alongside clients across Adelaide, I support local clubs, coaches and run crews.</p>
+    </div>
+    <ul class="plist" id="plist">
+      <li class="prow on" data-p="0"><span class="pthumb"><img src="{{mtb_xl}}" alt=""></span><span class="pn">Mount Barker United</span><span class="pr">Club partner · Football SA</span></li>
+      <li class="prow" data-p="1"><span class="pthumb"><img src="{{smile_hd}}" alt=""></span><span class="pn">Stride Society</span><span class="pr">Run club · Founder Shaun</span></li>
+      <li class="prow" data-p="2"><span class="pthumb co"><img class="f" src="{{mark}}" alt=""><b class="ln"></b><img class="w" src="{{walkerville_logo}}" alt=""></span><span class="pn">Walkerville Physiotherapy</span><span class="pr">Clinical partner</span></li>
+    </ul>
+    <div class="pfoot"><span>Supporting local sport across Adelaide.</span><a class="btn btn-s" href="https://www.instagram.com/flex.fusionx/" target="_blank" rel="noopener">Follow @flex.fusionx <span class="ar">↗</span></a></div>
+  </div>
+  <div class="pstage" aria-hidden="true">
+    <figure class="on"><img src="{{mtb_xl}}" alt="" style="object-position:50% 25%"><figcaption>Mount Barker United</figcaption></figure>
+    <figure><img src="{{smile_hd}}" alt="" style="object-position:50% 30%"><figcaption>Stride Society · Shaun</figcaption></figure>
+    <figure><div class="ph co"><div class="col"><img class="fxm" src="{{mark}}" alt="FX"><img class="wmk" src="{{word}}" alt="FlexFusionX"><div class="rule" aria-hidden="true">×</div><img class="wl" src="{{walkerville_logo}}" alt="Walkerville Physiotherapy"></div></div><figcaption>Clinical partners</figcaption></figure>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="snap fill" id="book">
+  <div class="wrap">
+    <div class="book">
+      <div class="bookmain">
+        <div class="bhead"><span class="eyebrow">Book online</span><h2>Start with a 60&#8209;minute assessment</h2><p class="lede">No referral needed. In the clinic, at home or online. You'll leave with a written plan.</p></div>
+        <div class="prices" aria-label="Appointment types">
+          <div class="price"><strong>Initial assessment</strong><small>Clinic or home</small><em>60 min</em></div>
+          <div class="price"><strong>Follow-up</strong><small>Clinic or home</small><em>20 or 30 min</em></div>
+          <div class="price"><strong>Manual therapy &amp; massage</strong><small>Performance focus</small><em>30 to 90 min</em></div>
+          <div class="price"><strong>Telehealth</strong><small>Consult or follow-up by video</small><em>40 or 20 min</em></div>
+          <div class="price"><strong>NDIS session</strong><small>Home or clinic</small><em>60 min</em></div>
+        </div>
+      </div>
+      <div class="bookside">
+      <div class="ckwrap">
+<!--CLINIKO-->
+        <iframe id="cliniko-80172789" src="https://flexfusionx.au5.cliniko.com/bookings?embedded=true" title="Book an appointment with FlexFusionX (Cliniko)" frameborder="0" scrolling="auto" width="100%" height="1000" style="pointer-events:auto" allow="payment"></iframe>
+<!--/CLINIKO-->
+      </div>
+      <p class="cklink">Prefer a full page? <a href="https://flexfusionx.au5.cliniko.com/bookings" target="_blank" rel="noopener">Open the booking page ↗</a></p>
+        <div class="assure">
+          <div>No GP referral needed</div>
+          <div>Clinic, home or telehealth sessions</div>
+          <div>Need to cancel? Just give 24 hours' notice. No fees. <a href="terms.html">Booking terms</a></div>
+          <div>Health questions go through Cliniko's secure intake form</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FIND US -->
+<section class="snap fill alt findus" id="contact">
+  <div class="fmap">
+    <a class="fphoto" href="https://www.google.com/maps/search/?api=1&amp;query=101+Portrush+Rd+Evandale+SA+5069" target="_blank" rel="noopener" aria-label="Open 101 Portrush Rd, Evandale in Google Maps"><img src="{{balance_front}}" alt="Balance Physio at 101 Portrush Rd, Evandale, where FlexFusionX sees clients"></a>
+    <div class="fcard">
+      <span class="eyebrow">Clinic</span>
+      <strong>101 Portrush Rd, Evandale SA 5069</strong>
+      <span>Inside Balance Physiotherapy · On-site parking</span>
+      <div class="ctas"><a class="btn btn-w" href="https://www.google.com/maps/search/?api=1&amp;query=101+Portrush+Rd+Evandale+SA+5069" target="_blank" rel="noopener">Get directions <span class="ar">↗</span></a></div>
+    </div>
+  </div>
+  <div class="fbody">
+    <div style="display:grid;gap:12px"><span class="eyebrow">Find us</span><h2>Clinic, home or online</h2></div>
+    <dl class="finfo" style="margin:0">
+      <div><dt class="eyebrow">Phone</dt><dd><a href="tel:+61449969060">0449 969 060</a></dd></div>
+      <div><dt class="eyebrow">Email</dt><dd><a href="mailto:ck@flexfusionx.com.au">ck@flexfusionx.com.au</a></dd></div>
+      <div><dt class="eyebrow">Home visits</dt><dd>Adelaide metro &amp; eastern suburbs</dd></div>
+      <div><dt class="eyebrow">Hours</dt><dd>Mon &amp; Tue 6–8pm<br>Wed &amp; Fri 8am–8pm<br>Sat 8am–12pm · Sun 10am–3pm</dd></div>
+      <div><dt class="eyebrow">Parking</dt><dd>On site at the clinic</dd></div>
+      <div><dt class="eyebrow">Telehealth</dt><dd>Video sessions, anywhere in Australia</dd></div>
+    </dl>
+    <div class="ask">
+      <h3>Not sure where to start? Ask me first.</h3>
+      <p>Call or email and I'll point you to the right appointment. Replies within 24 hours.</p>
+      <div class="ctas"><a class="btn btn-p" href="tel:+61449969060">Call 0449 969 060</a><a class="btn btn-s" href="mailto:ck@flexfusionx.com.au">Email Cyriac <span class="ar">→</span></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="snap" id="faq">
+  <div class="wrap">
+    <div class="head"><div><span class="eyebrow">FAQ</span><h2>Before you book</h2></div><p class="lede">Still unsure? Call or email and I'll tell you if FlexFusionX is the right fit.</p></div>
+    <div class="faq2">
+      <div>
+        <details open><summary>Do I need a referral?</summary><p>No. Book directly. You only need one for Medicare, WorkCover or CTP claims.</p></details>
+        <details><summary>What happens in the first session?</summary><p>You fill in a detailed intake form before you arrive, so the 60 minutes go on assessment, movement analysis and building your plan.</p></details>
+        <details><summary>Will I have to stop training?</summary><p>Usually not. Load is modified, training is adjusted and capacity is built while you rehab.</p></details>
+        <details><summary>Is this only for athletes?</summary><p>No. The same approach works for anyone who wants to move better, including people after surgery and NDIS participants.</p></details>
+        <details><summary>What injuries do you treat?</summary><p>Tendon pain, muscle strains, joint pain, post-surgical rehab, persistent pain and sport-specific injuries.</p></details>
+        <details><summary>I've had this injury for months. Can you help?</summary><p>Chronic and recurring injuries are a big part of what I treat. The focus is on why it keeps coming back.</p></details>
+      </div>
+      <div>
+        <details><summary>How long are sessions?</summary><p>60 minutes for your first visit. Follow-ups are 20 or 30 minutes. Manual therapy and massage sessions run from 30 to 90 minutes.</p></details>
+        <details><summary>How many sessions will I need?</summary><p>It depends on your injury and goals. You'll always know the plan and where you're heading.</p></details>
+        <details><summary>Do you see NDIS participants?</summary><p>Yes, at home or in the clinic. Support workers are welcome, and invoices can go to your plan manager.</p></details>
+        <details><summary>Do you offer online sessions?</summary><p>Yes. Structured rehab with ongoing support, ideal if you're time-poor or outside Adelaide.</p></details>
+        <details><summary>What if I need to cancel?</summary><p>Just give 24 hours' notice. There are no cancellation fees.</p></details>
+        <details><summary>Can I claim on private health?</summary><p>Call or email before you book and I'll confirm what your health fund, Medicare plan or DVA card covers.</p></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div style="display:grid;gap:14px;align-content:start"><img class="lockup" src="{{lockup}}" alt="FlexFusionX Performance Physiotherapy, est. 2026"><span class="eyebrow" style="color:var(--silver)">Physiotherapy · Rehabilitation · Performance</span></div>
+      <div><h4>Visit</h4><ul><li>101 Portrush Rd</li><li>Evandale SA 5069</li><li>Inside Balance Physiotherapy</li><li>On-site parking</li></ul></div>
+      <div><h4>Contact</h4><ul><li><a href="tel:+61449969060">0449 969 060</a></li><li><a href="mailto:ck@flexfusionx.com.au">ck@flexfusionx.com.au</a></li><li><a href="https://www.instagram.com/flex.fusionx/" target="_blank" rel="noopener">Instagram ↗</a></li></ul></div>
+      <div><h4>Info</h4><ul><li><a href="#faq">FAQ</a></li><li><a href="privacy.html">Privacy policy</a></li><li><a href="terms.html">Terms &amp; cancellations</a></li></ul></div>
+    </div>
+    <div class="legal">
+      <span>FlexFusionX acknowledges the Kaurna people, Traditional Owners of the land on which we work.</span>
+      <span>FlexFusionX · ABN 81 239 476 840 · Cyriac Kallarakkal, AHPRA registration PHY0004039512 · General information only, not a substitute for an individual assessment.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="stickybook" id="stickybook"><a class="btn btn-o call" href="tel:+61449969060">Call</a><a class="btn btn-w" href="#book" style="flex:1;justify-content:center">Book an appointment <span class="ar">→</span></a></div>
+<div class="ctrl" aria-label="Mockup controls">
+  <button class="more" type="button" id="replay">↻ Replay intro</button>
+  <button class="more" type="button" id="themeToggle" aria-pressed="false">Sections: dark</button>
+  <button type="button" tabindex="0" id="vpchip">Mockup</button>
+</div>
+
+<script>
+(function(){
+  var html=document.documentElement,b=document.body;
+  html.style.setProperty('--fxmask','url("{{mark}}")');
+
+  var vpc=document.getElementById('vpchip');function vpr(){vpc.textContent='Mockup · '+window.innerWidth+'×'+window.innerHeight}vpr();window.addEventListener('resize',vpr);
+  var tt=document.getElementById('themeToggle');
+  function setTheme(light){b.classList.toggle('light',light);tt.setAttribute('aria-pressed',String(light));tt.textContent='Sections: '+(light?'light':'dark')}
+  try{if(localStorage.getItem('ffx6-theme')==='light')setTheme(true)}catch(e){}
+  tt.addEventListener('click',function(){var l=!b.classList.contains('light');setTheme(l);try{localStorage.setItem('ffx6-theme',l?'light':'dark')}catch(e){}});
+
+  /* mobile menu */
+  var drawer=document.getElementById('drawer'),mb=document.getElementById('menuBtn');
+  function menu(open){drawer.hidden=!open;mb.setAttribute('aria-expanded',String(open));html.style.overflow=open?'hidden':''}
+  mb.addEventListener('click',function(){menu(true)});
+  document.getElementById('menuClose').addEventListener('click',function(){menu(false)});
+  drawer.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){menu(false)})});
+
+  /* nav state, mobile book bar, x-ray flip */
+  var nav=document.getElementById('nav'),sb=document.getElementById('stickybook');
+  var xsc=document.querySelector('.xscene'),xst=document.getElementById('xstage');
+  /* the X-ray stays beside the text whenever both texts fit; otherwise stack without it */
+  function xfit(){
+    xsc.classList.remove('xstack');
+    if(window.innerWidth<700){xsc.classList.add('xstack');return}
+    var sh=xst.getBoundingClientRect().height,fits=true;
+    xsc.querySelectorAll('.xtext').forEach(function(tx){
+      var g=getComputedStyle(tx.closest('.xgrid'));
+      if(tx.scrollHeight>sh-parseFloat(g.paddingTop)-parseFloat(g.paddingBottom)+1)fits=false;
+    });
+    if(!fits)xsc.classList.add('xstack');
+  }
+  function stacked(){return xsc.classList.contains('xstack')}
+  function xflip(){
+    if(stacked()){xst.classList.remove('flip');nav.classList.remove('lightnav');return}
+    var r=xsc.getBoundingClientRect(),run=r.height-window.innerHeight,p=run>0?-r.top/run:0;
+    if(p>0.42)xst.classList.add('flip');else if(p<0.3)xst.classList.remove('flip');
+    nav.classList.toggle('lightnav',xst.classList.contains('flip')&&r.top<=1&&r.bottom>=72);
+  }
+  function onScroll(){var y=window.scrollY;nav.classList.toggle('solid',y>40);sb.classList.toggle('show',y>window.innerHeight*.8);xflip()}
+  xfit();
+  window.addEventListener('scroll',onScroll,{passive:true});window.addEventListener('resize',function(){xfit();onScroll()});onScroll();
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){xfit();onScroll()});
+
+  /* services strip */
+  /* services: expanding strip on desktop, swipe carousel on mobile; arrows + dots drive both */
+  var strip=document.getElementById('strip'),panels=strip.querySelectorAll('.panel'),n=panels.length,idx=0;
+  var dots=document.querySelectorAll('.scar .dots i'),lbl=document.querySelector('.slbl');
+  var names=[].map.call(panels,function(p){return p.querySelector('h3').textContent});
+  function mob(){return window.innerWidth<=860}
+  function mark(i){idx=i;dots.forEach(function(d,k){d.classList.toggle('on',k===i)});lbl.innerHTML='<b>'+String(i+1).padStart(2,'0')+'</b> / 0'+n+' · <span>'+names[i]+'</span>'}
+  function open(p){panels.forEach(function(q){q.classList.toggle('on',q===p)});mark([].indexOf.call(panels,p))}
+  function nearest(){var x=strip.scrollLeft,best=0,bd=1e9;panels.forEach(function(p,k){var d=Math.abs(p.offsetLeft-panels[0].offsetLeft-x);if(d<bd){bd=d;best=k}});return best}
+  function go(i){i=(i+n)%n;if(mob()){strip.scrollTo({left:panels[i].offsetLeft-panels[0].offsetLeft,behavior:'smooth'});mark(i)}else open(panels[i])}
+  document.querySelector('.sprev').addEventListener('click',function(){go(idx-1)});
+  document.querySelector('.snext').addEventListener('click',function(){go(idx+1)});
+  panels.forEach(function(p){
+    p.addEventListener('mouseenter',function(){if(!mob())open(p)});
+    p.addEventListener('focusin',function(){if(!mob())open(p)});
+    p.addEventListener('click',function(){if(!mob())open(p)});
+  });
+  strip.addEventListener('scroll',function(){if(mob()){var b=nearest();if(b!==idx)mark(b)}},{passive:true});
+  /* mouse drag on the mobile carousel; touch swipes natively */
+  var dragX=null,dragL=0,moved=false;
+  strip.addEventListener('pointerdown',function(e){if(!mob()||e.pointerType!=='mouse')return;dragX=e.clientX;dragL=strip.scrollLeft;moved=false;strip.classList.add('drag')});
+  window.addEventListener('pointermove',function(e){if(dragX===null)return;var dx=e.clientX-dragX;if(Math.abs(dx)>4)moved=true;strip.scrollLeft=dragL-dx});
+  window.addEventListener('pointerup',function(){if(dragX===null)return;dragX=null;strip.classList.remove('drag');go(nearest())});
+  strip.addEventListener('click',function(e){if(moved){e.preventDefault();e.stopPropagation();moved=false}},true);
+  /* desktop: advance on its own while on screen and not hovered */
+  var hover=false,inview=false,stillM=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  strip.addEventListener('mouseenter',function(){hover=true});
+  strip.addEventListener('mouseleave',function(){hover=false});
+  if('IntersectionObserver' in window)new IntersectionObserver(function(es){inview=es[0].isIntersecting},{threshold:.5}).observe(strip);
+  if(!stillM)setInterval(function(){if(!mob()&&inview&&!hover&&!document.hidden)go(idx+1)},5200);
+
+  /* partners: hover a name to swap the preview */
+  var rows=document.querySelectorAll('#plist .prow'),figs=document.querySelectorAll('.pstage figure');
+  rows.forEach(function(r){r.addEventListener('mouseenter',function(){var i=+r.dataset.p;rows.forEach(function(x){x.classList.toggle('on',x===r)});figs.forEach(function(f,k){f.classList.toggle('on',k===i)})})});
+
+  /* fit: sections that can't fit one screen grow instead of clipping, and stop snapping */
+  function fit(){
+    document.querySelectorAll('main>section').forEach(function(s){
+      s.classList.remove('grow','nosnap');
+      if(s.classList.contains('fill')&&!s.classList.contains('hero')){
+        var inner=s.querySelector('.copy,.plist-wrap,.fbody,.wrap');
+        if(inner&&inner.scrollHeight>inner.clientHeight+2)s.classList.add('grow');
+      }
+      if(s.getBoundingClientRect().height>window.innerHeight+2)s.classList.add('nosnap');
+    });
+  }
+  fit();window.addEventListener('resize',fit);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
+
+  /* Cliniko embed: resize to its content and scroll to it on page changes (from Cliniko's embed code) */
+  window.addEventListener('message',function(e){
+    var ck=document.getElementById('cliniko-80172789');
+    if(!ck||typeof e.data!=='string')return;
+    if(window.matchMedia('(min-width:901px) and (min-height:561px)').matches&&e.data.search('cliniko-bookings-resize')>-1)return;
+    if(e.data.search('cliniko-bookings-resize')>-1){ck.style.height=Number(e.data.split(':')[1])+'px';}
+    if(e.data.search('cliniko-bookings-page')>-1)ck.scrollIntoView();
+  });
+
+  /* intro: build the wordmark, then dock the FX mark into the nav */
+  var intro=document.getElementById('intro'),cnt=document.getElementById('icount');
+  var fx=intro.querySelector('.ifx2'),iw=intro.querySelector('.iw'),navMk=document.querySelector('.nav .mk');
+  var OUT=3400,timers=[],raf=null;
+  function T(fn,ms){timers.push(setTimeout(fn,ms))}
+  function clearAll(){timers.forEach(clearTimeout);timers=[];cancelAnimationFrame(raf)}
+  (function(){var txt=iw.textContent;iw.textContent='';txt.split('').forEach(function(c,i){var s=document.createElement('span');s.className='ch';s.textContent=c;s.style.setProperty('--i',i);iw.appendChild(s)})})();
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function fly(el,target){var a=el.getBoundingClientRect(),r=target.getBoundingClientRect();var s=r.width/a.width,dx=(r.left+r.width/2)-(a.left+a.width/2),dy=(r.top+r.height/2)-(a.top+a.height/2);el.style.transform='translate('+dx+'px,'+dy+'px) scale('+s+')'}
+  function leave(){
+    if(intro.hidden||intro.classList.contains('leaving'))return;
+    clearAll();cnt.textContent='100';
+    intro.classList.add('done');void intro.offsetWidth;intro.classList.add('leaving');
+    fly(fx,navMk);
+    T(function(){html.classList.add('entering');requestAnimationFrame(function(){html.classList.remove('pre')})},260);
+    T(function(){html.classList.remove('dock');intro.hidden=true;intro.className='intro';fx.style.transform='';html.style.overflow=''},1000);
+    T(function(){html.classList.remove('entering')},3400);
+  }
+  function play(){
+    clearAll();html.classList.remove('entering');html.classList.add('pre','dock');
+    intro.hidden=false;intro.className='intro';fx.style.transform='';
+    window.scrollTo(0,0);html.style.overflow='hidden';
+    if(reduce){intro.hidden=true;html.classList.remove('pre','dock');html.style.overflow='';return}
+    void intro.offsetWidth;intro.className='intro play';
+    var t0=performance.now();
+    (function tick(now){var p=Math.min(1,(now-t0)/OUT);cnt.textContent=String(Math.round(p*100)).padStart(3,'0');if(p<1)raf=requestAnimationFrame(tick)})(t0);
+    T(leave,OUT);
+  }
+  intro.addEventListener('click',leave);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){leave();menu(false)}});
+  document.getElementById('replay').addEventListener('click',play);
+  play();
+})();
+</script>

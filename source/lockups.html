@@ -1,0 +1,150 @@
+<title>FX × Walkerville Lockups</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,600;125,700;125,900&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,900&display=swap">
+<style>
+:root{
+  color-scheme:dark;
+  --ink:#0A0A0B;
+  --panel:#101012;
+  --panel2:#17181B;
+  --fg:#FFFFFF;
+  --soft:#C9CCD0;
+  --muted:#8E9297;
+  --line:rgba(255,255,255,.12);
+  --signal:#E3262D;
+  --wp:#F79628;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --wide:"Archivo","Arial Black",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--fg);font:400 15px/1.55 var(--sans);-webkit-font-smoothing:antialiased;padding-inline:clamp(16px,4vw,56px);padding-block:clamp(32px,6vh,64px)}
+img{max-width:100%;display:block}
+.eyebrow{font:700 11px/1.3 var(--wide);font-stretch:125%;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+h1{margin:10px 0 10px;font:900 clamp(34px,5vw,64px)/.92 var(--sans);text-transform:uppercase;letter-spacing:-.035em}
+.intro{color:var(--soft);max-width:62ch;margin:0 0 36px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+@media (max-width:1000px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.grid{grid-template-columns:1fr}}
+.opt{display:grid;gap:14px;align-content:start}
+.opt h2{margin:0;display:flex;gap:10px;align-items:baseline;font:900 18px/1 var(--sans);text-transform:uppercase;letter-spacing:-.01em}
+.opt h2 span{font:700 11px/1 var(--wide);font-stretch:125%;letter-spacing:.18em;color:var(--signal)}
+.opt p{margin:0;color:var(--soft);font-size:14px}
+.opt .verdict{color:var(--muted);font-size:13px}
+
+/* the stage: same proportions as the partner preview panel on the site */
+.stage{position:relative;aspect-ratio:546/696;background:var(--panel);overflow:hidden;display:grid;place-items:center}
+.stage .cap{position:absolute;left:18px;bottom:16px;font:700 9.5px/1 var(--wide);font-stretch:125%;letter-spacing:.18em;text-transform:uppercase;color:var(--soft)}
+.thumbrow{display:flex;align-items:center;gap:12px}
+.thumb{width:72px;aspect-ratio:1;background:var(--panel);display:grid;place-items:center;overflow:hidden;flex:none;padding:8px}
+.thumbrow span{font-size:12px;color:var(--muted)}
+
+.fx{filter:invert(1)}
+.x{font:300 34px/1 var(--sans);color:var(--muted)}
+
+/* A: cross */
+.a .row{display:flex;align-items:center;gap:22px;padding:0 10%}
+.a .fx{width:30%}
+.a .wl{width:52%}
+
+/* B: stacked */
+.b .col{display:grid;justify-items:center;gap:22px;width:70%}
+.b .fx{width:42%}
+.b .wordm{width:78%}
+.b .rule{display:flex;align-items:center;gap:12px;width:100%;color:var(--muted);font:300 22px/1 var(--sans)}
+.b .rule::before,.b .rule::after{content:"";flex:1;height:1px;background:var(--line)}
+.b .wl{width:82%}
+
+/* C: split */
+.c{display:grid;grid-template-rows:1fr 1fr;place-items:stretch}
+.c .half{display:grid;place-items:center}
+.c .top{background:#000}
+.c .bot{background:var(--panel2)}
+.c .top .fx{width:38%}
+.c .bot .wl{width:62%}
+.c .seam{position:absolute;left:0;right:0;top:50%;height:2px;background:var(--signal);transform:translateY(-1px)}
+.c .chip{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;background:var(--ink);border:2px solid var(--signal);display:grid;place-items:center;font:500 18px/1 var(--sans);color:#fff}
+
+/* D: orange bridge */
+.d .col{display:grid;justify-items:center;gap:20px;width:72%}
+.d .fx{width:40%}
+.d .x{color:var(--wp);font-size:40px;font-weight:400}
+.d .wl{width:86%}
+.d .tag{font:700 10px/1 var(--wide);font-stretch:125%;letter-spacing:.24em;text-transform:uppercase;color:var(--soft);margin-top:6px}
+
+/* E: seal */
+.e .seal{width:80%;border:1px solid rgba(255,255,255,.22);padding:26px 22px 20px;display:grid;gap:18px;justify-items:center;position:relative}
+.e .seal::before{content:"";position:absolute;inset:6px;border:1px solid rgba(255,255,255,.08);pointer-events:none}
+.e .pair{display:flex;align-items:center;gap:16px;width:100%}
+.e .fx{width:30%}
+.e .vr{width:1px;align-self:stretch;background:rgba(255,255,255,.22)}
+.e .wl{flex:1;min-width:0}
+.e .tag{font:700 9.5px/1 var(--wide);font-stretch:125%;letter-spacing:.24em;text-transform:uppercase;color:var(--soft)}
+
+/* F: wordmarks */
+.f .col{display:grid;justify-items:center;gap:26px;width:82%}
+.f .wordm{width:92%}
+.f .x{font-size:30px}
+.f .wl{width:70%}
+.f .tag{font:500 13px/1.4 var(--sans);color:var(--soft);text-align:center;max-width:24ch}
+
+.foot{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;max-width:80ch}
+</style>
+
+<span class="eyebrow">Partner card · Proudly supporting</span>
+<h1>FX × Walkerville</h1>
+<p class="intro">Six ways to show the partnership in the large preview panel (desktop, when someone hovers "Walkerville Physiotherapy") and the small thumbnail on phones. Each stage below uses the panel's real proportions. Their logo is used unchanged; only the arrangement around it differs.</p>
+
+<div class="grid">
+
+  <section class="opt">
+    <h2><span>A</span>Side by side</h2>
+    <div class="stage a"><div class="row"><img class="fx" src="{{mark}}" alt="FX mark"><span class="x">×</span><img class="wl" src="{{wl}}" alt="Walkerville Physiotherapy logo"></div><span class="cap">Clinical partner</span></div>
+    <div class="thumbrow"><div class="thumb" style="gap:4px;display:flex"><img class="fx" src="{{mark}}" alt="" style="width:34%"><span style="color:#8E9297;font-size:10px">×</span><img src="{{wl}}" alt="" style="width:50%"></div><span>Phone thumbnail</span></div>
+    <p>The classic co-brand: two marks, one ×, equal weight.</p>
+    <p class="verdict">Safe and instantly understood. A little plain for the size of the panel.</p>
+  </section>
+
+  <section class="opt">
+    <h2><span>B</span>Stacked</h2>
+    <div class="stage b"><div class="col"><img class="fx" src="{{mark}}" alt="FX mark"><img class="fx wordm" src="{{word}}" alt="FlexFusionX"><div class="rule">×</div><img class="wl" src="{{wl}}" alt="Walkerville Physiotherapy logo"></div><span class="cap">Clinical partner</span></div>
+    <div class="thumbrow"><div class="thumb" style="display:grid;gap:3px;justify-items:center"><img class="fx" src="{{mark}}" alt="" style="width:46%"><img src="{{wl}}" alt="" style="width:92%"></div><span>Phone thumbnail</span></div>
+    <p>Full FlexFusionX lockup on top, a ruled ×, their logo underneath. Fills the tall panel well.</p>
+    <p class="verdict">Balanced and premium. Our name reads first, which suits our site.</p>
+  </section>
+
+  <section class="opt">
+    <h2><span>C</span>Split</h2>
+    <div class="stage c"><div class="half top"><img class="fx" src="{{mark}}" alt="FX mark"></div><div class="half bot"><img class="wl" src="{{wl}}" alt="Walkerville Physiotherapy logo"></div><span class="seam"></span><span class="chip">×</span><span class="cap">Clinical partner</span></div>
+    <div class="thumbrow"><div class="thumb" style="padding:0;display:grid;grid-template-rows:1fr 1fr"><div style="background:#000;display:grid;place-items:center"><img class="fx" src="{{mark}}" alt="" style="width:46%"></div><div style="background:#17181B;display:grid;place-items:center;border-top:2px solid #E3262D"><img src="{{wl}}" alt="" style="width:82%"></div></div><span>Phone thumbnail</span></div>
+    <p>Two halves joined by a red seam and an × badge. Each brand gets its own space.</p>
+    <p class="verdict">Most striking. Echoes the black/white split of the X-ray scene.</p>
+  </section>
+
+  <section class="opt">
+    <h2><span>D</span>Orange bridge</h2>
+    <div class="stage d"><div class="col"><img class="fx" src="{{mark}}" alt="FX mark"><span class="x">×</span><img class="wl" src="{{wl}}" alt="Walkerville Physiotherapy logo"><span class="tag">Clinical partners · Adelaide</span></div><span class="cap">Clinical partner</span></div>
+    <div class="thumbrow"><div class="thumb" style="display:grid;gap:2px;justify-items:center"><img class="fx" src="{{mark}}" alt="" style="width:44%"><span style="color:#F79628;font-size:11px;line-height:1">×</span><img src="{{wl}}" alt="" style="width:90%"></div><span>Phone thumbnail</span></div>
+    <p>Centred stack where the × takes Walkerville's orange, so the join belongs to both brands.</p>
+    <p class="verdict">Warmest option. Brings in a second accent colour, used only here.</p>
+  </section>
+
+  <section class="opt">
+    <h2><span>E</span>Seal</h2>
+    <div class="stage e"><div class="seal"><div class="pair"><img class="fx" src="{{mark}}" alt="FX mark"><span class="vr"></span><img class="wl" src="{{wl}}" alt="Walkerville Physiotherapy logo"></div><span class="tag">Clinical partners</span></div><span class="cap">Clinical partner</span></div>
+    <div class="thumbrow"><div class="thumb" style="border:1px solid rgba(255,255,255,.2);display:flex;gap:4px;align-items:center"><img class="fx" src="{{mark}}" alt="" style="width:36%"><img src="{{wl}}" alt="" style="width:54%"></div><span>Phone thumbnail</span></div>
+    <p>A double-ruled frame like a certificate, marks separated by a hairline.</p>
+    <p class="verdict">Reads as an official partnership. Smaller marks, so less impact.</p>
+  </section>
+
+  <section class="opt">
+    <h2><span>F</span>Wordmarks</h2>
+    <div class="stage f"><div class="col"><img class="fx wordm" src="{{word}}" alt="FlexFusionX"><span class="x">×</span><img class="wl" src="{{wl}}" alt="Walkerville Physiotherapy logo"><span class="tag">Clinical partners · Adelaide</span></div><span class="cap">Clinical partner</span></div>
+    <div class="thumbrow"><div class="thumb" style="display:grid;gap:4px;justify-items:center"><img class="fx" src="{{word}}" alt="" style="width:92%"><img src="{{wl}}" alt="" style="width:80%"></div><span>Phone thumbnail</span></div>
+    <p>Name to name, no FX mark. Closest to a press-release style partnership line.</p>
+    <p class="verdict">Clearest at a glance, but the FX mark is our strongest asset and it's missing.</p>
+  </section>
+
+</div>
+
+<p class="foot">Their logo is the 293px version from walkervillephysiotherapy.com.au, so it is slightly soft at this size. Before launch, ask Walkerville for an SVG or large PNG and confirm they're happy with the co-branded treatment you pick.</p>

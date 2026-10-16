@@ -1,0 +1,26 @@
+# headless browser profiles and screenshots from the viewport checks
+tools/edge-prof*/
+tools/audit/
+tools/review/
+tools/preview*.html
+tools/privacy.html
+tools/terms.html
+tools/lockups_preview.html
+tools/vp.json
+
+# generated: mockups and the production build (rebuild with source/build.py, deploy/build_prod.py)
+mockups/
+deploy/site/
+.wrangler/
+deploy/.wrangler/
+
+# private: client brief, old Lovable bundle (contains its Supabase keys), account backups
+brief/
+old-site/
+tools/cliniko-backup/
+deploy/godaddy-dns-*.json
+
+# never commit credentials
+.env
+*.key
+__pycache__/
