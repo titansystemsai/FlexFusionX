@@ -129,7 +129,7 @@ open(os.path.join(SITE, "sitemap.xml"), "w").write(
     + "</urlset>\n")
 open(os.path.join(SITE, "_headers"), "w").write(
     "/img/*\n  Cache-Control: public, max-age=31536000, immutable\n"
-    "/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n")
+    "/*\n  Strict-Transport-Security: max-age=31536000\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n")
 
 total = sum(os.path.getsize(os.path.join(d, f)) for d, _, fs in os.walk(SITE) for f in fs)
 print("built", SITE, "index.html", os.path.getsize(os.path.join(SITE, "index.html")) // 1024, "KB,",
