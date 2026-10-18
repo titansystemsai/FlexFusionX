@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en-AU">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FlexFusionX Brand Kit</title>
+<style>
+@font-face{font-family:"Inter";src:url(fonts/desktop/Inter-Regular.ttf);font-weight:400}
+@font-face{font-family:"Inter";src:url(fonts/desktop/Inter-Medium.ttf);font-weight:500}
+@font-face{font-family:"Inter";src:url(fonts/desktop/Inter-SemiBold.ttf);font-weight:600}
+@font-face{font-family:"Inter";src:url(fonts/desktop/InterDisplay-Black.ttf);font-weight:900}
+@font-face{font-family:"Archivo Expanded";src:url(fonts/desktop/ArchivoExpanded-Medium.ttf);font-weight:500}
+@font-face{font-family:"Archivo Expanded";src:url(fonts/desktop/ArchivoExpanded-Bold.ttf);font-weight:700}
+@font-face{font-family:"Archivo Expanded";src:url(fonts/desktop/ArchivoExpanded-Black.ttf);font-weight:900}
+:root{--ink:#0A0A0B;--panel:#131315;--white:#fff;--red:#E3262D;--muted:#B4B8BC;--line:rgba(255,255,255,.11);
+  --sans:"Inter",system-ui,sans-serif;--wide:"Archivo Expanded","Arial Black",sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--white);font:400 17px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,48px)}
+header{padding:72px 0 56px;border-bottom:1px solid var(--line)}
+header img{height:56px;width:auto}
+.label{font:700 11px/1.3 var(--wide);letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+h1,h2,h3{margin:0;font-family:var(--sans);font-weight:900;text-transform:uppercase;letter-spacing:-.035em;line-height:.92}
+h1{font-size:clamp(44px,8vw,104px);margin-top:28px}
+h2{font-size:clamp(32px,4.4vw,56px);margin:10px 0 28px}
+p{max-width:62ch;color:#C9CCD0;margin:0}
+section{padding:64px 0;border-bottom:1px solid var(--line)}
+.grid{display:grid;gap:16px}
+.logos{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.tile{border:1px solid var(--line);padding:28px;display:grid;gap:18px;align-content:start}
+.tile .art{height:150px;display:grid;place-items:center;border-radius:2px}
+.tile .art img{max-width:78%;max-height:90px}
+.tile small{font:500 13px/1.4 var(--sans);color:var(--muted)}
+.dark{background:var(--ink);border:1px solid var(--line)}.light{background:#fff}.redbg{background:var(--red)}
+.swatches{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.sw{border:1px solid var(--line)}
+.sw .chip{height:110px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
+.sw div:last-child{padding:14px 16px;display:grid;gap:4px}
+.sw b{font:700 15px/1.2 var(--sans)}
+.sw code{font:600 14px/1 ui-monospace,Consolas,monospace;color:#fff}
+.sw span{font-size:13px;line-height:1.4;color:var(--muted)}
+.spec{display:grid;grid-template-columns:220px 1fr;gap:24px;padding:28px 0;border-top:1px solid var(--line);align-items:baseline}
+.spec:first-of-type{border-top:0}
+.spec .meta{font:500 13px/1.5 var(--sans);color:var(--muted)}
+.spec .meta b{display:block;color:#fff;font-weight:600;font-size:14px;margin-bottom:4px}
+.btn{display:inline-flex;gap:12px;align-items:center;padding:16px 22px;font:700 12px/1 var(--wide);letter-spacing:.16em;text-transform:uppercase;border:1.5px solid currentColor;text-decoration:none}
+.btn-w{background:#fff;color:var(--ink);border-color:#fff}.btn-o{color:#fff;border-color:rgba(255,255,255,.5)}
+.rules{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.rule{padding:22px;border:1px solid var(--line)}
+.rule h3{font-size:18px;margin-bottom:10px}
+.rule.do h3::before{content:"Do · ";color:#7BD389}.rule.dont h3::before{content:"Don't · ";color:var(--red)}
+.rule p{font-size:15px}
+footer{padding:40px 0 64px;color:var(--muted);font-size:14px}
+@media (max-width:700px){.spec{grid-template-columns:1fr;gap:10px}}
+</style>
+<body>
+<header><div class="wrap">
+  <img src="logos/FlexFusionX-lockup-white.png" alt="FlexFusionX">
+  <h1>Brand kit</h1>
+  <p style="margin-top:18px">The colours, type and logos used on flexfusionx.com.au. Use these for Instagram, flyers, slides and signage so everything looks like one brand: dark, cinematic, black and white, with one red accent.</p>
+</div></header>
+
+<section><div class="wrap">
+  <span class="label">01 · Logo</span><h2>Logo</h2>
+  <div class="grid logos">
+    <div class="tile"><div class="art dark"><img src="logos/FlexFusionX-lockup-white.png" alt=""></div><b>Lockup, white</b><small>Default. On black, dark photos and video.</small></div>
+    <div class="tile"><div class="art light"><img src="logos/FlexFusionX-lockup-black.png" alt=""></div><b>Lockup, black</b><small>On white and light backgrounds.</small></div>
+    <div class="tile"><div class="art dark"><img src="logos/FX-mark-white.png" alt="" style="max-height:70px"></div><b>FX mark</b><small>Small spaces: avatars, favicons, stickers, watermarks.</small></div>
+    <div class="tile"><div class="art dark"><img src="logos/FlexFusionX-wordmark-white.png" alt="" style="max-width:86%"></div><b>Wordmark</b><small>Wide formats: banners, headers, email signatures.</small></div>
+    <div class="tile"><div class="art redbg"><img src="logos/FX-mark-white.png" alt="" style="max-height:70px"></div><b>Mark on Signal Red</b><small>Occasional accent only, such as a sticker or story highlight.</small></div>
+    <div class="tile"><div class="art light"><img src="logos/FX-mark-red.png" alt="" style="max-height:70px"></div><b>Red mark</b><small>Use sparingly, as a bullet or detail. Never as the main logo.</small></div>
+  </div>
+  <p style="margin-top:24px">Leave clear space around the logo at least the height of the FX mark's crossbar. Don't stretch, rotate, recolour (other than black, white or Signal Red), outline or add effects.</p>
+</div></section>
+
+<section><div class="wrap">
+  <span class="label">02 · Colour</span><h2>Colour</h2>
+  <div class="grid swatches">
+    <div class="sw"><div class="chip" style="background:#0A0A0B"></div><div><b>Ink</b><code>#0A0A0B</code><span>Main background. RGB 10 10 11.</span></div></div>
+    <div class="sw"><div class="chip" style="background:#131315"></div><div><b>Panel</b><code>#131315</code><span>Alternate dark background, cards.</span></div></div>
+    <div class="sw"><div class="chip" style="background:#FFFFFF"></div><div><b>White</b><code>#FFFFFF</code><span>Headlines and text on dark; light sections.</span></div></div>
+    <div class="sw"><div class="chip" style="background:#E3262D"></div><div><b>Signal Red</b><code>#E3262D</code><span>The only colour. Accents: rules, bullets, active states, one underlined word. Big text only (4.3:1 on Ink).</span></div></div>
+    <div class="sw"><div class="chip" style="background:#C9CCD0"></div><div><b>Soft</b><code>#C9CCD0</code><span>Body text over photos.</span></div></div>
+    <div class="sw"><div class="chip" style="background:#B4B8BC"></div><div><b>Muted (on dark)</b><code>#B4B8BC</code><span>Secondary text and labels on dark.</span></div></div>
+    <div class="sw"><div class="chip" style="background:#53575C"></div><div><b>Muted (on white)</b><code>#53575C</code><span>Secondary text on white.</span></div></div>
+    <div class="sw"><div class="chip" style="background:#F3F4F5"></div><div><b>Light Grey</b><code>#F3F4F5</code><span>Alternate light background.</span></div></div>
+  </div>
+  <p style="margin-top:24px">Rough balance: about 80% black, 15% white, 5% red. Photos go black and white or low-saturation, high-contrast, shot at night or under gym lights.</p>
+</div></section>
+
+<section><div class="wrap">
+  <span class="label">03 · Type</span><h2>Typography</h2>
+  <div class="spec"><div class="meta"><b>Headline</b>Inter Display Black · UPPERCASE<br>Letter-spacing −3.5% · line height 0.92</div>
+    <div style="font:900 clamp(40px,6vw,84px)/.92 var(--sans);text-transform:uppercase;letter-spacing:-.035em">Rehab that works around your training.</div></div>
+  <div class="spec"><div class="meta"><b>Subheading</b>Inter Display Black · UPPERCASE<br>Letter-spacing −2% · line height 1</div>
+    <div style="font:900 26px/1 var(--sans);text-transform:uppercase;letter-spacing:-.02em">Sports injury rehabilitation</div></div>
+  <div class="spec"><div class="meta"><b>Body</b>Inter Regular · 16–18px<br>Line height 1.55 · sentence case</div>
+    <p style="color:#fff">Injured and told to stop? Book a 60-minute assessment in the clinic, at home or online, and leave with a plan that keeps you moving.</p></div>
+  <div class="spec"><div class="meta"><b>Emphasis</b>Inter SemiBold</div>
+    <div style="font:600 20px/1.3 var(--sans)">Getting injured again and again</div></div>
+  <div class="spec"><div class="meta"><b>Label</b>Archivo Expanded Bold · 11px<br>UPPERCASE · letter-spacing +22%</div>
+    <div class="label" style="color:#fff">Meet your physio · AHPRA registered</div></div>
+  <div class="spec"><div class="meta"><b>Button</b>Archivo Expanded Bold · 12px<br>UPPERCASE · letter-spacing +16%</div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-w">Book an appointment <span style="font-family:var(--sans);letter-spacing:0">→</span></a><a class="btn btn-o">Explore services</a></div></div>
+  <p style="margin-top:12px">Both fonts are free for commercial use (SIL Open Font License). In Canva, if you can't upload fonts, the closest built-ins are <b style="color:#fff">Inter</b> (it's in Canva) and <b style="color:#fff">Archivo Black</b> for labels.</p>
+</div></section>
+
+<section><div class="wrap">
+  <span class="label">04 · Voice</span><h2>Do and don't</h2>
+  <div class="grid rules">
+    <div class="rule do"><h3>Short and direct</h3><p>"Rehab that works around your training." One idea per line. Talk like a coach, not a brochure.</p></div>
+    <div class="rule do"><h3>Black and white first</h3><p>Let the photo carry the mood. Red is a detail, not a fill.</p></div>
+    <div class="rule do"><h3>Headlines in caps</h3><p>Big, tight, uppercase Inter Black. Everything else in sentence case.</p></div>
+    <div class="rule dont"><h3>Outcome promises</h3><p>AHPRA rules: no "guaranteed results", no testimonials about clinical outcomes, no before/after claims.</p></div>
+    <div class="rule dont"><h3>Extra colours</h3><p>No gradients, blues or greens. Ink, white and Signal Red only.</p></div>
+    <div class="rule dont"><h3>Wall of text</h3><p>If a post needs more than three short lines, split it into a carousel.</p></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">FlexFusionX · ABN 81 239 476 840 · flexfusionx.com.au · Fonts: Inter (Rasmus Andersson), Archivo (Omnibus-Type), both SIL OFL 1.1.</div></footer>
+</body>
+</html>

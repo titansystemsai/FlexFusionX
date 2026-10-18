@@ -24,3 +24,6 @@ deploy/godaddy-dns-*.json
 .env
 *.key
 __pycache__/
+
+# brand kit zip (rebuild from brand-kit/)
+FlexFusionX-brand-kit.zip
