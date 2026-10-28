@@ -30,16 +30,16 @@ out = os.path.normpath(os.path.join(here, "..", "mockups", "flexfusionx-home-lat
 open(out, "w", encoding="utf8").write(page)
 print("wrote", out, len(page) // 1024, "KB")
 
-# artifact variant: claude.ai blocks third-party iframes, so the live Cliniko embed
+# artifact variant: claude.ai blocks third-party iframes, so the live HaltH embed
 # becomes a card with a real link to the booking page
 import re as _re
 fallback = (
-    '<div class="ckfall"><span class="eyebrow" style="color:#53575C">Online bookings · Powered by Cliniko</span>'
-    '<h3>Live Cliniko booking appears here on the website</h3>'
+    '<div class="ckfall"><span class="eyebrow" style="color:#53575C">Online bookings · Powered by HaltH</span>'
+    '<h3>Live booking appears here on the website</h3>'
     "<p>This preview can't show embedded booking widgets. Open the real booking page to see available times.</p>"
-    '<a class="btn btn-k" style="background:#0A0A0B;color:#fff;border-color:#0A0A0B" href="https://flexfusionx.au5.cliniko.com/bookings" target="_blank" rel="noopener">Open the booking page ↗</a></div>'
+    '<a class="btn btn-k" style="background:#0A0A0B;color:#fff;border-color:#0A0A0B" href="https://app.halth.com/booking/flexfusionx" target="_blank" rel="noopener">Open the booking page ↗</a></div>'
 )
-art = _re.sub(r"<!--CLINIKO-->.*?<!--/CLINIKO-->", fallback, page, flags=_re.S)
+art = _re.sub(r"<!--BOOKING-->.*?<!--/BOOKING-->", fallback, page, flags=_re.S)
 art_out = os.path.normpath(os.path.join(here, "..", "mockups", "flexfusionx-home-artifact.html"))
 open(art_out, "w", encoding="utf8").write(art)
 print("wrote", art_out)

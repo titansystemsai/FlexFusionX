@@ -54,7 +54,7 @@ for pat in [r"\n  var vpc=document\.getElementById\('vpchip'\);[^\n]*",
             r"\n  document\.getElementById\('replay'\)\.addEventListener\('click',play\);"]:
     page, n = re.subn(pat, "", page)
     assert n == 1, pat
-page = page.replace("<!--CLINIKO-->\n", "").replace("<!--/CLINIKO-->\n", "")
+page = page.replace("<!--BOOKING-->\n", "").replace("<!--/BOOKING-->\n", "")
 
 # --- real head
 title = "FlexFusionX | Performance & NDIS Physiotherapy in Adelaide"

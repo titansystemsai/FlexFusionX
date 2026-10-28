@@ -47,12 +47,12 @@ PRIVACY = r"""
 <li>For NDIS participants: the NDIA, your plan manager and your support coordinator.</li>
 <li>Family members, carers, guardians or support workers you nominate.</li>
 <li>A coach or trainer, only if you ask us to.</li>
-<li>Service providers who help us run the practice: our practice software (Cliniko, which also runs our online bookings, SMS reminders and telehealth video), email (Google Workspace) and website hosting (Cloudflare). They may only use your information to provide their service to us.</li>
+<li>Service providers who help us run the practice: our online booking system (HaltH), our practice software (Cliniko, which also runs our SMS reminders and telehealth video), email (Google Workspace) and website hosting (Cloudflare). They may only use your information to provide their service to us.</li>
 <li>Anyone we are legally required to tell, or where needed to lessen a serious threat to someone's life, health or safety.</li>
 </ul>
 
 <h2>6. Overseas disclosure</h2>
-<p>Our patient records are stored with Cliniko on servers in Australia. Some of our service providers, including parts of Cliniko's, Google's and our website host's services, may process limited information in other countries, mainly the United States. We use providers with strong security and privacy commitments.</p>
+<p>Our patient records are stored with Cliniko on servers in Australia. Some of our service providers, including parts of HaltH's, Cliniko's, Google's and our website host's services, may process limited information in other countries, mainly the United States. We use providers with strong security and privacy commitments.</p>
 
 <h2>7. How we keep it safe</h2>
 <p>Records are kept in Cliniko, a secure, encrypted practice management system. Only Cyriac can access clinical records, and accounts are protected by strong, unique passwords. We don't keep paper records. If we receive any, we scan and securely destroy them. Telehealth sessions use a secure video service and are not recorded without your consent.</p>
@@ -66,8 +66,8 @@ PRIVACY = r"""
 <h2>10. Our website</h2>
 <ul>
 <li><b>Enquiries:</b> the site has no contact form. If you call or email us, we use what you tell us only to reply and arrange your care.</li>
-<li><b>Online booking:</b> bookings and intake forms are run by Cliniko and covered by this policy and <a href="https://www.cliniko.com/policies/privacy/" target="_blank" rel="noopener">Cliniko's privacy policy</a>.</li>
-<li><b>Cookies and analytics:</b> this site doesn't use analytics or advertising cookies. The booking widget is provided by Cliniko and the fonts by Google Fonts, which receive basic technical information such as your IP address.</li>
+<li><b>Online booking:</b> you book through HaltH, which passes your booking and details to our Cliniko account. Intake forms are sent and stored by Cliniko. Both are covered by this policy, <a href="https://app.halth.com/au/legal/privacy" target="_blank" rel="noopener">HaltH's privacy policy</a> and <a href="https://www.cliniko.com/policies/privacy/" target="_blank" rel="noopener">Cliniko's privacy policy</a>.</li>
+<li><b>Cookies and analytics:</b> this site doesn't use analytics or advertising cookies. The booking widget is provided by HaltH and the fonts by Google Fonts, which receive basic technical information such as your IP address. HaltH may use cookies needed for the booking to work.</li>
 <li><b>Links:</b> our site links to other sites, such as Instagram and Google Maps, which have their own privacy policies.</li>
 </ul>
 

@@ -304,7 +304,12 @@ p{margin:0;max-width:56ch}
 
 /* booking */
 .book{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,5vw,72px);align-items:start;max-width:none}
-#book{--bg:#FFFFFF;--bg2:#F3F4F5;--fg:#0A0A0B;--muted:#53575C;--line:#E2E4E6;background:#fff;color:#0A0A0B;color-scheme:light}
+/* HaltH's booking page sits on a warm grey, so the section matches it and the form reads as part of the page */
+#book{--bg:#F1EEE9;--bg2:#FFFFFF;--fg:#0A0A0B;--muted:#53575C;--line:#DCD7CF;background:#F1EEE9;color:#0A0A0B;color-scheme:light}
+#book .ckwrap{background:transparent;border:0}
+/* HaltH doesn't report its height, so on phones the form gets a tall fixed frame and scrolls inside it */
+@media (max-width:900px),(max-height:560px){#book .ckwrap iframe{height:88vh;height:88svh}}
+#book .ckfall{background:#fff;border-radius:16px}
 #book .bhead h2{font-size:clamp(2rem,min(4vw,7.4vh),5.25rem)}
 #book .lede b{color:var(--fg);font-weight:600}
 .bfacts{list-style:none;margin:0;padding:0;display:grid;gap:clamp(8px,1.6vh,14px);border-top:2px solid var(--fg);padding-top:clamp(14px,2.6vh,24px)}
@@ -352,7 +357,7 @@ p{margin:0;max-width:56ch}
 .times .off{color:#A3A7AC;text-decoration:line-through}
 .widget-foot{padding:12px 18px;border-top:1px solid #E2E4E6;font:500 0.6875rem/1.4 var(--sans);color:#53575C;display:flex;justify-content:space-between}
 @media (max-width:900px){.book{grid-template-columns:1fr}.times{grid-template-columns:repeat(3,minmax(0,1fr))}}
-/* desktop: the booking section is one screen; Cliniko fills the right column and scrolls inside it */
+/* desktop: the booking section is one screen; the HaltH form fills the right column and scrolls inside it */
 @media (min-width:901px) and (min-height:561px){
   #book .wrap{flex:1;min-height:0;display:flex;flex-direction:column}
   #book .book{flex:1;min-height:0;align-items:stretch;grid-template-columns:minmax(0,.78fr) minmax(0,1.32fr)}
@@ -694,7 +699,7 @@ html.entering .hero .reg{transition:opacity .8s ease 1s,transform .8s ease 1s}
   </div>
 </section>
 
-<!-- BOOKING: light section so Cliniko's white form sits natively -->
+<!-- BOOKING: section matches HaltH's background so the form sits natively; bookings flow through to Cliniko -->
 <section class="snap fill" id="book">
   <div class="wrap">
     <div class="book">
@@ -708,15 +713,15 @@ html.entering .hero .reg{transition:opacity .8s ease 1s,transform .8s ease 1s}
         <div class="balt">
           <span class="cklink">Prefer to talk?</span>
           <a class="btn btn-s" href="tel:+61449969060">Call 0449 969 060</a>
-          <a class="cklink" href="https://flexfusionx.au5.cliniko.com/bookings" target="_blank" rel="noopener">Open the booking page in a new tab ↗</a>
+          <a class="cklink" href="https://app.halth.com/booking/flexfusionx" target="_blank" rel="noopener">Open the booking page in a new tab ↗</a>
           <a class="cklink" href="terms.html">Booking terms</a>
         </div>
       </div>
       <div class="bookside">
       <div class="ckwrap">
-<!--CLINIKO-->
-        <iframe id="cliniko-80172789" src="https://flexfusionx.au5.cliniko.com/bookings?embedded=true" title="Book an appointment with FlexFusionX (Cliniko)" frameborder="0" scrolling="auto" width="100%" height="1000" style="pointer-events:auto" allow="payment"></iframe>
-<!--/CLINIKO-->
+<!--BOOKING-->
+        <iframe id="booking-frame" src="https://app.halth.com/booking/flexfusionx" title="Book an appointment with FlexFusionX" frameborder="0" scrolling="auto" width="100%" height="1000" allow="payment"></iframe>
+<!--/BOOKING-->
       </div>
       </div>
     </div>
@@ -894,14 +899,6 @@ html.entering .hero .reg{transition:opacity .8s ease 1s,transform .8s ease 1s}
   }
   fit();window.addEventListener('resize',fit);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
 
-  /* Cliniko embed: resize to its content and scroll to it on page changes (from Cliniko's embed code) */
-  window.addEventListener('message',function(e){
-    var ck=document.getElementById('cliniko-80172789');
-    if(!ck||typeof e.data!=='string')return;
-    if(window.matchMedia('(min-width:901px) and (min-height:561px)').matches&&e.data.search('cliniko-bookings-resize')>-1)return;
-    if(e.data.search('cliniko-bookings-resize')>-1){ck.style.height=Number(e.data.split(':')[1])+'px';}
-    if(e.data.search('cliniko-bookings-page')>-1)ck.scrollIntoView();
-  });
 
   /* intro: build the wordmark, then dock the FX mark into the nav */
   var intro=document.getElementById('intro'),cnt=document.getElementById('icount');
