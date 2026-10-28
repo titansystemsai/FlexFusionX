@@ -2,7 +2,8 @@
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    if (url.protocol === "http:" || url.hostname === "www.flexfusionx.com.au") {
+    const live = url.hostname.endsWith("flexfusionx.com.au"); // leave localhost and workers.dev alone
+    if (live && (url.protocol === "http:" || url.hostname === "www.flexfusionx.com.au")) {
       url.protocol = "https:";
       url.hostname = "flexfusionx.com.au";
       return Response.redirect(url.toString(), 301);
